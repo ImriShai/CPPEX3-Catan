@@ -8,9 +8,9 @@ using namespace std;
 namespace ariel{
     class Board{
         private:
-        vector<Tile> tiles;
+        vector<::Tile*> tiles;
         public:
         void printBoard();
         vector<Tile>& getTiles();
-    }
+    };
 }

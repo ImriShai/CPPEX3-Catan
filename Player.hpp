@@ -3,28 +3,30 @@
 #include <iostream>
 #include <stdexcept>
 #include "Board.hpp"
+#include "Settelment.hpp"
+#include "Road.hpp" 
+
+
 using namespace std;
 namespace ariel{
 class Player{
     private:
         string name;
-        vector<string> resources;
-        vector<int> resourcesNum;
-        vector<string> settlements;
-        vector<int> settlementsNum;
-        vector<string> roads;
-        vector<int> roadsNum;
+        size_t age;
+        vector<size_t> resources = {0,0,0,0,0};
+        vector<Settelments*> settlements;
+        vector<Road*> roads;
+        size_t victoryPoints;
     public:
         Player(string name);
-        void placeSettelemnt(vector<string> places, vector<int> placesNum, Board &board);
-        void placeRoad(vector<string> places, vector<int> placesNum, Board &board);
+        void placeSettelemnt(size_t id,Board &board);
+        void placeRoad(size_t id, Board &board);
         void rollDice();
         string getName();
-        vector<string> getResources();
-        vector<int> getResourcesNum();
-        vector<string> getSettlements();
-        vector<int> getSettlementsNum();
-        vector<string> getRoads();
-        vector<int> getRoadsNum();
+        vector<size_t> getResources();
+        vector<Settelments*> getSettelments();
+        vector<Road*> getRoads();
+        size_t getVictoryPoints();
+        void addResource(size_t resource);
 };
 }

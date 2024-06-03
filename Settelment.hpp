@@ -1,30 +1,35 @@
 #include <string>
 #include <iostream>
-#include "Player.hpp"
+#include <vector>
+#include "Road.hpp"
 using namespace std;
 namespace ariel{
 class Settlement {
 private:
     int value;
     string type;
-    int id;
+    size_t id;
     Player owner;
+    vector<size_t> adjSett;
+    vector<size_t> adjRoads;
+
 
 public:
     // Constructor
-    Settlement(int value, const std::string& type, int id, const Player& owner)
-        : value(value), type(type), id(id), owner(owner) {}
+    Settlement(int value, const std::string& type, size_t id, const Player& owner);
+         
 
     // Getters
-    int getValue() const { return value; }
-    std::string getType() const { return type; }
-    int getId() const { return id; }
-    const Player& getOwner() const { return owner; }
+    int getValue() const;
+    std::string getType() const;
+    size_t getId() const;
+    const Player& getOwner() const;
 
     // Setters
-    void setValue(int newValue) { value = newValue; }
-    void setType(const std::string& newType) { type = newType; }
-    void setId(int newId) { id = newId; }
+    void setValue(int newValue);
+    void setType(const std::string& newType);
+    void setId(size_t newId);
+    void setOwner(const Player& newOwner);
     
 };
 }
