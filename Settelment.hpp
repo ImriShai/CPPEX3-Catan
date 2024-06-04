@@ -2,13 +2,15 @@
 #include <iostream>
 #include <vector>
 #include "Road.hpp"
+enum  TO_STRING_MODE {REGULAR = 0, BUILDING = 1};
+enum  VALUE {NONE = 0, SETTELMENT = 1, CITY =2};
 using namespace std;
 namespace ariel{
 class Settlement {
 private:
-    int value;
+    size_t value;
     string type;
-    size_t id;
+    const size_t id;
     Player owner;
     vector<size_t> adjSett;
     vector<size_t> adjRoads;
@@ -16,7 +18,7 @@ private:
 
 public:
     // Constructor
-    Settlement(int value, const std::string& type, size_t id, const Player& owner);
+    Settlement(size_t id);
          
 
     // Getters
@@ -28,8 +30,9 @@ public:
     // Setters
     void setValue(int newValue);
     void setType(const std::string& newType);
-    void setId(size_t newId);
+
     void setOwner(const Player& newOwner);
+    string toString(size_t mode);
     
 };
 }

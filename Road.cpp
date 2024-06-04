@@ -1,7 +1,7 @@
 #include "Road.hpp"
 
-    ariel::Road::Road(size_t id, const std::string& type, const Player& owner): id(id), type(type), owner(owner) {
-        switch (id)
+    ariel::Road::Road(size_t id): id(id) owner(nullptr) {
+        switch (id) //ADD type according to the id
         {
         case 1:
             vector<size_t> adjSett = {1,4};
@@ -235,6 +235,7 @@
     std::vector<Road*> getAdjacents() const;
     void addAdjacent(Road* road);
     void removeAdjacent(Road* road);
+    string toString(size_t mode);
 
     // Other member functions specific to the Road class
 };

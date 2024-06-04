@@ -6,6 +6,12 @@ namespace ariel
 {
 class Tile
 {
+    private:
+    size_t number;                 // Number on the tile
+    string resource;            // Resource type on the tile
+    const char id;                    // ID of the tile
+    vector<size_t> roads;       // Vector of roads on the tile
+    vector<size_t> settelments; // Vector of settelments on the tile
 public:
     // Constructor
     Tile(char id);
@@ -14,21 +20,16 @@ public:
     ~Tile();
 
     // Getter and setter methods for tile properties
-    int getNumber() const;
+    size_t getNumber() const;
     void setNumber(int number);
     string getResource() const;
     void setSetellmentType(int index, int type);
     void setRoadOwner(int index);
-    vector<string> &getSettelments() const;
-    vector<string> &getRoads() const;
+    vector<size_t> &getSettelments() const;
+    vector<size_t> &getRoads() const;
     char getId() const;
 
-private:
-    int number;                 // Number on the tile
-    string resource;            // Resource type on the tile
-    char id;                    // ID of the tile
-    vector<string> roads;       // Vector of roads on the tile
-    vector<string> settelments; // Vector of settelments on the tile
+
 };
 }
 

@@ -9,8 +9,7 @@ ariel::Tile::Tile(char id)
         id = 'A';
         number = 10;
         resource = "🪨";
-        roads = vector<string>(3);
-        settelments = vector<string>(2, "◽");
+        
 
         break;
     case 'B':
@@ -112,7 +111,7 @@ ariel::Tile::~Tile()
 }
 
 // Getter method for number
-int ariel::Tile::getNumber() const
+size_t ariel::Tile::getNumber() const
 {
     return number;
 }

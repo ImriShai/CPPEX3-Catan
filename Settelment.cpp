@@ -1,8 +1,8 @@
 #include "Settelment.hpp"
 using namespace std;
 
-    ariel::Settement::Settlement(int value, const std::string& type, size_t id, const Player& owner)
-        : value(value), type(type), id(id), owner(owner) {
+    ariel::Settement::Settlement(int value,  size_t id )
+        : value(VALUE::NONE), type("🟫"), id(id), owner(nullptr) {
             switch (id)
             {
             case 1:
@@ -239,3 +239,4 @@ using namespace std;
     void setId(size_t newId) { id = newId; }
     
     void setOwner(const Player& newOwner) { owner = newOwner};
+    string toString(size_t mode); // Create string to print the object for printing the board

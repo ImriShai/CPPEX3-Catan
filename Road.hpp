@@ -3,17 +3,20 @@
 #include <iostream>
 #include "Player.hpp"
 #include "Settelment.hpp"
+enum TO_STRING_MODE {REGULAR = 0, BUILDING = 1};
+
+using namespace std;
 namespace ariel{
 class Road {
 private:
     std::string type;
     Player owner;
     vector<size_t> adjSettelments; 
-    size_t id;
+    const size_t id;
 
 
 public:
-    Road(size_t id, const std::string& type, const Player& owner);
+    Road(size_t id);
 
     ~Road();
 
@@ -26,6 +29,7 @@ public:
     std::vector<Road*> getAdjacents() const;
     void addAdjacent(Road* road);
     void removeAdjacent(Road* road);
+    string toString(size_t mode); 
 
     // Other member functions specific to the Road class
 };
