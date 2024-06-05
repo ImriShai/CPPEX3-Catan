@@ -1,4 +1,5 @@
-#include "VictoryPoint.hpp"
+#include "Player.hpp"
+#include "Catan.hpp"
 namespace ariel
 {
     VictoryPoint::VictoryPoint(){
@@ -8,7 +9,7 @@ namespace ariel
         this->value = 1;
     }
 
-    void VictoryPoint::useCard(){
+    void VictoryPoint::useCard(Player& player, Catan& game) {
         // Implement the logic for using the Knight development card
         // ...
     }

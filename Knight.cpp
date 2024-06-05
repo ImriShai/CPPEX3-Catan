@@ -1,4 +1,5 @@
-#include "Knight.hpp"
+#include "Player.hpp"
+#include "Catan.hpp"
 namespace ariel
 {
 
@@ -9,7 +10,7 @@ namespace ariel
         this->value = 0;   
      } 
     // Override the useCard() method
-    void Knight::useCard(){
+    void Knight::useCard(Player& player, Catan& game){
         // Implement the logic for using the Knight development card
         // ...
     }

@@ -4,9 +4,13 @@
 #include <iostream>
 #include <stdexcept>
 #include "Consts.hpp"
+
+
 using namespace std;
 namespace ariel
 {
+class Player;
+class Catan;
 class DevelopmentCard {
 protected: 
     string discription;
@@ -14,7 +18,7 @@ protected:
     size_t id;
     size_t value;
 public:
-    virtual void useCard(Player& owner) = 0;
+    virtual void useCard(Player& ,Catan&) = 0;
     // Add any common functionality or data members here
     virtual string getDiscription() const;
     virtual size_t getId() const;

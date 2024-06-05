@@ -1,4 +1,6 @@
-#include "RoadBuilding.hpp"
+#include "Player.hpp"
+#include "Catan.hpp"
+
 namespace ariel
 {
     RoadBuilding::RoadBuilding(){
@@ -8,7 +10,7 @@ namespace ariel
         this->value = 0;
     }
 
-    void RoadBuilding::useCard(){
+    void RoadBuilding::useCard(Player& owner, Catan& game){
         // Implement the logic for using the Knight development card
         // ...
     }

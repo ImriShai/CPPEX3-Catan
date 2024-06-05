@@ -5,6 +5,6 @@ namespace ariel
     class Knight : public DevelopmentCard {
        public:
         Knight();
-        void useCard() override;
+        void useCard(ariel::Player&,Catan&) override;
     };
 }

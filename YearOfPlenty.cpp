@@ -1,4 +1,5 @@
-#include "YearOfPlenty.hpp"
+#include "Player.hpp"
+#include "Catan.hpp"
 namespace ariel{
     YearOfPlenty::YearOfPlenty(){
         this->discription = "Year Of Plenty";
@@ -6,7 +7,7 @@ namespace ariel{
         this->id = 1;
         this->value = 0;
     }
-     YearOfPlenty::useCard(){
+     void YearOfPlenty::useCard(Player& player, Catan& game){
         cout<<"Choose 2 cards from the bank, Enter a vector of the cards you want, the oreder is: Brick, Wood, Wheat, Sheep, Ore "<<endl;
         cout<<"Enter the first card: ";
         string input;

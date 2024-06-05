@@ -2,6 +2,16 @@
 const std::string ariel::Consts::RED = "/033[1;31m";
 const std::string ariel::Consts::BLUE = "/033[1;34m";
 const std::string ariel::Consts::ORANGE = "/033[1;33m";
+
+static bool isValidNumber(const std::string& str) {
+    for (char c : str) {
+        if (!std::isdigit(c)) {
+            return false;
+        }
+    }
+    return true;
+}
+
 const std::vector<size_t> ariel::Consts::parseResource(const std::string resource)
 {
 
@@ -22,12 +32,4 @@ const std::vector<size_t> ariel::Consts::parseResource(const std::string resourc
     }
 
     return result;
-}
-static bool isValidNumber(const std::string& str) {
-    for (char c : str) {
-        if (!std::isdigit(c)) {
-            return false;
-        }
-    }
-    return true;
 }
