@@ -6,6 +6,18 @@ namespace ariel{
         this->id = 1;
         this->value = 0;
     }
-    void YearOfPlenty::useCard(){
+     YearOfPlenty::useCard(){
+        cout<<"Choose 2 cards from the bank, Enter a vector of the cards you want, the oreder is: Brick, Wood, Wheat, Sheep, Ore "<<endl;
+        cout<<"Enter the first card: ";
+        string input;
+        cin>>input;
+        vector<size_t> cards = Consts::parseResource(input);
+        if( (cards[0]+cards[1]+cards[2]+cards[3]+cards[4]) > 2){
+            cout<<"You can only choose 2 cards, you entered more than 2 cards"<<endl;
+            return;
+        }
+
+
+
     }
 }

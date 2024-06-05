@@ -1,5 +1,10 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <iostream>
+#include <stdexcept>
+#include <sstream> 
+
 using namespace std;
 namespace ariel
 {
@@ -13,5 +18,6 @@ class Consts
     static const string RED;
     static const string ORANGE;
     static const string BLUE;
+    static const vector<size_t> parseResource(const string resource);
 };
 }

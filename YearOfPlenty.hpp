@@ -7,6 +7,6 @@ public:
     YearOfPlenty();
 
     // Override the useCard() method
-    void useCard() override;
+    void useCard(Player& player) override;
 };
 }
