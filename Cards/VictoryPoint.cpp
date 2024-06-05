@@ -1,5 +1,5 @@
-#include "Player.hpp"
-#include "Catan.hpp"
+#include "../Player.hpp"
+#include "../Catan.hpp"
 namespace ariel
 {
     VictoryPoint::VictoryPoint(){

@@ -117,7 +117,7 @@ size_t ariel::Tile::getNumber() const
 }
 
 // Setter method for number
-void ariel::Tile::setNumber(int number)
+void ariel::Tile::setNumber(size_t number)
 {
     this->number = number;
 }

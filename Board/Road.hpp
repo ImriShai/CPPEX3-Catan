@@ -2,8 +2,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "Player.hpp"
-#include "Consts.hpp"
+#include "../Player.hpp"
+#include "../Consts.hpp"
 
 using namespace std;
 namespace ariel{

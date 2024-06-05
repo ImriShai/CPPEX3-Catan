@@ -51,6 +51,14 @@ namespace ariel{
             for(int i=0; i<3; i++){
                 developmentCards.push_back(new Knight());
             }
+            for(int i=0; i<2; i++){
+                developmentCards.push_back(new Monopoly());
+                developmentCards.push_back(new RoadBuilding());
+                developmentCards.push_back(new YearOfPlenty());
+            }
+            for(int i=0; i<5; i++){
+                developmentCards.push_back(new VictoryPoint());
+            }
         }
 
         Catan::~Catan(){

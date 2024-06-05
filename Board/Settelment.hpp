@@ -3,8 +3,8 @@
 #include <iostream>
 #include <vector>
 #include "Road.hpp"
-#include "Player.hpp"
-#include "Consts.hpp"
+#include "../Player.hpp"
+#include "../Consts.hpp"
 using namespace std;
 namespace ariel{
 class Settlement {
@@ -27,7 +27,7 @@ public:
     const Player& getOwner() const;
 
     // Setters
-    void setValue(int newValue);
+    void setValue(size_t newValue);
     void setType(const std::string& newType);
 
     void setOwner(Player* newOwner);

@@ -48,8 +48,6 @@ namespace ariel
         size_t Player::getVictoryPoints(){
             return this->victoryPoints;
         }
-        void addResource(size_t resource, size_t amount);
-        void removeResource(size_t resource, size_t amount);
 
         void Player::addVictoryPoints(size_t amount){
             this->victoryPoints += amount;
@@ -68,6 +66,21 @@ namespace ariel
         size_t Player::getAge() const{
             return this->age;
         }
-
-
+        void Player::addResource(size_t resource, size_t amount){
+            if (resource < 0 || resource > 4 || amount < 0)
+            {
+                throw invalid_argument("Resource must be between 0 and 4");
+            }
+            this->resources[resource] += amount;
+        }
+            void Player::removeResource(size_t resource, size_t amount){
+            if (resource < 0 || resource > 4 || amount < 0)
+            {
+                throw invalid_argument("Resource must be between 0 and 4");
+            }
+            if(this->resources[resource] < amount){
+                throw invalid_argument("Not enough resources to remove");
+            }
+            this->resources[resource] -= amount;
+}
 }

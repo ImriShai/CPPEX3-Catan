@@ -23,7 +23,7 @@ const std::vector<size_t> ariel::Consts::parseResource(const std::string resourc
         if (!isValidNumber(token)) {
             throw std::invalid_argument("Input string contains non-numeric characters.");
         }
-        result.push_back(std::stoi(token));
+        result.push_back((size_t)std::stoi(token));
     }
 
     // Ensure the vector has exactly 5 elements

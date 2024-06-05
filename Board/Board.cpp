@@ -25,13 +25,13 @@ namespace ariel{
    
     void Board::init(){
         
-        for(int i=0; i<19; i++){
+        for(size_t i=0; i<19; i++){
             tiles[i] = new Tile(i+1);
         }
-        for(int i=0; i<54; i++){
+        for(size_t i=0; i<54; i++){
             settlements[i] = new Settlement(i+1);
         }
-        for(int i=0; i<72; i++){
+        for(size_t i=0; i<72; i++){
             roads[i] = new Road(i+1);
         }
         

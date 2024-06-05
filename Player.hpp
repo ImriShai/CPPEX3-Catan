@@ -3,7 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
-#include "DevelopmentCard.hpp"
+#include "Cards/DevelopmentCard.hpp"
 
 using namespace std;
 namespace ariel

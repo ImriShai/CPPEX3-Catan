@@ -6,14 +6,14 @@
 #include <unordered_map>
 #include <algorithm>
 #include "Player.hpp"
-#include "Board.hpp"
+#include "Board/Board.hpp"
 #include "Consts.hpp"
-#include "DevelopmentCard.hpp"
-#include "Knight.hpp"
-#include "Monopoly.hpp"
-#include "RoadBuilding.hpp"
-#include "YearOfPlenty.hpp"
-#include "VictoryPoint.hpp"
+#include "Cards/DevelopmentCard.hpp"
+#include "Cards/Knight.hpp"
+#include "Cards/Monopoly.hpp"
+#include "Cards/RoadBuilding.hpp"
+#include "Cards/YearOfPlenty.hpp"
+#include "Cards/VictoryPoint.hpp"
 
 
 

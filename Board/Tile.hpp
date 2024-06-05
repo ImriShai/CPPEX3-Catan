@@ -22,7 +22,7 @@ public:
 
     // Getter and setter methods for tile properties
     size_t getNumber() const;
-    void setNumber(int number);
+    void setNumber(size_t number);
     string getResource() const;
     void setSetellmentType(int index, int type);
     void setRoadOwner(int index);
