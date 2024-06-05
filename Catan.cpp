@@ -2,9 +2,6 @@
 using namespace std;
 namespace ariel{
         Catan::Catan(Player &p1, Player &p2, Player &p3){
-            if(p1.getName() == p2.getName() || p1.getName() == p3.getName() || p2.getName() == p3.getName()){
-                throw invalid_argument("Players must have different names");
-            }
             players.push_back(p1);
             players.push_back(p2);
             players.push_back(p3);

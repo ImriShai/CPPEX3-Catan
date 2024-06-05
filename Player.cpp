@@ -2,15 +2,14 @@
 using namespace std;
 namespace ariel
 {
-        Player::Player(){
-            this->name = "";
-            this->age = 0;
-            this->victoryPoints = 0;
-            this->settlements = {};
-            this->roads = {};
-            this->developmentCards = {};
-        }
+       
         Player::Player(string name, size_t age){
+            if(name.empty()){
+                throw invalid_argument("Name cannot be empty");
+            }
+            if(age < 0){
+                throw invalid_argument("Age cannot be negative");
+            }
             this->name = name;
             this->age = age;
             this->victoryPoints = 0;
