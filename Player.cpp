@@ -1,8 +1,16 @@
 #include "Player.hpp"
 using namespace std;
-namespace ariel{
-
-        Player(string name, size_t age){
+namespace ariel
+{
+        Player::Player(){
+            this->name = "";
+            this->age = 0;
+            this->victoryPoints = 0;
+            this->settlements = {};
+            this->roads = {};
+            this->developmentCards = {};
+        }
+        Player::Player(string name, size_t age){
             this->name = name;
             this->age = age;
             this->victoryPoints = 0;
@@ -10,27 +18,56 @@ namespace ariel{
             this->roads = {};
             this->developmentCards = {};
         }
-        void placeSettelement(size_t id,Board &board){
+            bool Player::placeSettelement(size_t id){
             if(id<1||id>54){
                 throw invalid_argument("id must be between 1 and 54");
             }
             if(this->resources[0] < 1 || this->resources[1] < 1 || this->resources[2] < 1 || this->resources[3] < 1){
                 throw invalid_argument("Not enough resources to place a settlement");
             }
-            
+            return true;
+
         }
-        void placeCity(size_t id, Board &board);//id is the index of the City in the board tiles vector
-        void placeRoad(size_t id, Board &board);//id is the index of the Road in the board tiles vector
+        void placeCity(size_t id);//id is the index of the City in the board tiles vector
+        void placeRoad(size_t id);//id is the index of the Road in the board tiles vector
         void playDevelopmentCard(size_t id);//id is the index of the card in the developmentCards vector
         DevelopmentCard* buyDevelopmentCard();
         
-        string getName();
-        const vector<size_t> &getResources();
-        const vector<size_t> &getSettelments();
-        const vector<size_t> &getRoads();
-        size_t getVictoryPoints();
+        string Player::getName(){
+            return this->name;
+        }
+        const vector<size_t>& Player::getResources(){
+            return this->resources;
+        }
+        const vector<size_t>& Player::getSettelments(){
+            return this->settlements;
+        }
+        const vector<size_t>& Player::getRoads(){
+            return this->roads;
+        }
+        size_t Player::getVictoryPoints(){
+            return this->victoryPoints;
+        }
         void addResource(size_t resource, size_t amount);
         void removeResource(size_t resource, size_t amount);
+
+        void Player::addVictoryPoints(size_t amount){
+            this->victoryPoints += amount;
+        }
+        void Player::setColor(string color){
+            this->color = color;
+        }
+        string Player::getColor(){
+            return this->color;
+        }
+        Player::~Player(){
+            this->settlements.clear();
+            this->roads.clear();
+            this->developmentCards.clear();
+        }
+        size_t Player::getAge() const{
+            return this->age;
+        }
 
 
 }

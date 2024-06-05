@@ -1,22 +1,28 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
-#include <Tile.hpp>
 #include <stdexcept>
-#include <Settelment.hpp>
-#include <Road.hpp>
 #include <memory>
-
+#include "Tile.hpp"
+#include "Settelment.hpp"
+#include "Road.hpp"
+#include "Consts.hpp"
 using namespace std;
 namespace ariel{
     class Board{
         private:
-        vector<Tile*> tiles;
-        vector<unique_ptr<Settlement>> settlements;
-        vector<unique_ptr<Road>> roads;
+        Tile* tiles[19];
+        Settlement* settlements[54];
+        Road* roads[72];
+
         public:
-        void printBoard();
-       const Tile* getTile(char id); //id is the id of the tile
+        Board();
+        void printBoard(size_t mode);
         void init();
-    };
+        const Tile* getTile(char id);
+        const Settlement* getSettlement(size_t id);
+        const Road* getRoad(size_t id);
+        ~Board();
+        };
 }

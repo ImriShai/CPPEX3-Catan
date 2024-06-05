@@ -1,22 +1,28 @@
-#include <DevelopmentCard.hpp>
+#include "DevelopmentCard.hpp"
+using namespace std;
 namespace ariel
 {
     // Add any common functionality or data members here
-    virtual Player& getOwner() const{
-        return this->owner;
-    
-    }
-    virtual void setOwner(const Player& owner){
-        this->owner = owner;
-    }
-    virtual string getDiscription() const{
+
+    string DevelopmentCard::getDiscription() const
+    {
         return this->discription;
     }
-    virtual size_t getId() const{
+    size_t DevelopmentCard::getId() const
+    {
         return this->id;
     }
-    virtual size_t getValue() const{
+    size_t DevelopmentCard::getValue() const
+    {
         return this->value;
+    }
+    bool DevelopmentCard::isUsed() const
+    {
+        return this->used;
+    }
+    void DevelopmentCard::setUsed(bool flag)
+    {
+        this->used = flag;
     }
 
 }

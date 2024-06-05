@@ -1,18 +1,18 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
 #include "Player.hpp"
-#include "Settelment.hpp"
-enum TO_STRING_MODE {REGULAR = 0, BUILDING = 1};
+#include "Consts.hpp"
 
 using namespace std;
 namespace ariel{
 class Road {
 private:
     std::string type;
-    Player owner;
-    vector<size_t> adjSettelments; 
     const size_t id;
+    Player* owner;
+    vector<size_t> adjSettelments; 
 
 
 public:
@@ -20,15 +20,13 @@ public:
 
     ~Road();
 
-    std::string getType() const;
+    string getType();
     void setType(const std::string& type);
 
-    std::string getOwner() const;
-    void setOwner(const std::string& owner);
+   const Player &getOwner();
+    void setOwner(Player* owner);
 
-    std::vector<Road*> getAdjacents() const;
-    void addAdjacent(Road* road);
-    void removeAdjacent(Road* road);
+    const vector<size_t> &getAdjacents();
     string toString(size_t mode); 
 
     // Other member functions specific to the Road class

@@ -1,9 +1,10 @@
+#pragma once
 #include <string>
 #include <iostream>
 #include <vector>
 #include "Road.hpp"
-enum  TO_STRING_MODE {REGULAR = 0, BUILDING = 1};
-enum  VALUE {NONE = 0, SETTELMENT = 1, CITY =2};
+#include "Player.hpp"
+#include "Consts.hpp"
 using namespace std;
 namespace ariel{
 class Settlement {
@@ -11,11 +12,9 @@ private:
     size_t value;
     string type;
     const size_t id;
-    Player owner;
+    Player* owner;
     vector<size_t> adjSett;
     vector<size_t> adjRoads;
-
-
 public:
     // Constructor
     Settlement(size_t id);
@@ -31,7 +30,7 @@ public:
     void setValue(int newValue);
     void setType(const std::string& newType);
 
-    void setOwner(const Player& newOwner);
+    void setOwner(Player* newOwner);
     string toString(size_t mode);
     
 };

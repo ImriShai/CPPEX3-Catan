@@ -1,19 +1,33 @@
+#pragma once
 #include <string>
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <unordered_map>
+#include <algorithm>
 #include "Player.hpp"
 #include "Board.hpp"
+#include "Consts.hpp"
+#include "DevelopmentCard.hpp"
+#include "Knight.hpp"
+#include "Monopoly.hpp"
+#include "RoadBuilding.hpp"
+#include "YearOfPlenty.hpp"
+#include "VictoryPoint.hpp"
+
+
+
 using namespace std;
 namespace ariel
 {
     class Catan
     {
+    
     private:
         vector<Player> players;
-        Board board;
         size_t currentPlayer;
-        vector<size_t> availableResources = {19, 19, 19, 19, 19}; // {wood, brick, wheat, sheep, ore}
+        Board board;
+        vector<DevelopmentCard*> developmentCards;
         unordered_map<size_t, vector<char>> resourceTiles = {
            {2, {'B'}},
            {3, {'K', 'N'}},
@@ -23,18 +37,29 @@ namespace ariel
            {8, {'L','M'}},
            {9, {'C','H'}},
            {10, {'A','G'}},
-           {11, {'I','S'}}
-           {12, {'D'}}}
+           {11, {'I','S'}},
+           {12, {'D'}}};
+        void build();
+        void trade();
+        void buyDevelopmentCard();
+        void playDevelopmentCard();
+        void endTurn();
+        size_t rollDice();
+        void initDevelopmentCards();
 
 
     public:
-        Catan(Player p1, Player p2, Player p3);
+        Catan(Player& p1, Player& p2, Player& p3);
+        ~Catan();
         void ChooseStartingPlayer();
         const Board &getBoard();
-        void printBoard();
+        void printBoard(size_t mode);
         void start();
         bool checkWin();
-        const Player &getCurrentPlayer();
+        const Player& getCurrentPlayer();
         void init();
+        void getPlayerInput();
+
+
     };
 }

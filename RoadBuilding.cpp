@@ -1,22 +1,16 @@
-#include "DevelopmentCard.hpp"
+#include "RoadBuilding.hpp"
 namespace ariel
 {
-class RoadBuilding : public DevelopmentCard {
-public:
-    // Constructor
-    RoadBuildng(){
+    RoadBuilding::RoadBuilding(){
         this->discription = "RoadBuilding";
-        this->isUsed = false;
+        this->used = false;
         this->id = 1;
         this->value = 0;
-        this->owner = nullptr;
     }
 
-    // Override the useCard() method
-    void useCard() override {
+    void RoadBuilding::useCard(){
         // Implement the logic for using the Knight development card
         // ...
     }
     
 };
-}

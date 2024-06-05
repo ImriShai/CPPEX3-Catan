@@ -1,22 +1,16 @@
-#include "DevelopmentCard.hpp"
+#include "VictoryPoint.hpp"
 namespace ariel
 {
-class VictoryPoint : public DevelopmentCard {
-public:
-    // Constructor
-    VictoryPoint(){
+    VictoryPoint::VictoryPoint(){
         this->discription = "VictoryPoint";
-        this->isUsed = false;
+        this->used = false;
         this->id = 1;
         this->value = 1;
-        this->owner = nullptr;
     }
 
-    // Override the useCard() method
-    void useCard() override {
+    void VictoryPoint::useCard(){
         // Implement the logic for using the Knight development card
         // ...
     }
     
 };
-}

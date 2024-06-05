@@ -1,7 +1,7 @@
 #include "Tile.hpp"
 // Constructor implementation
 
-ariel::Tile::Tile(char id)
+ariel::Tile::Tile(char id):id(id)
 {
     switch (id)
     {
