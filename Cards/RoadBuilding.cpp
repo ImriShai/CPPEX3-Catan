@@ -5,7 +5,7 @@ namespace ariel
     RoadBuilding::RoadBuilding(){
         this->discription = "RoadBuilding";
         this->used = false;
-        this->id = 1;
+        this->type = 2; 
         this->value = 0;
     }
 
@@ -22,7 +22,7 @@ namespace ariel
         cout << "Choose second location to place a road: ";
         size_t secondLocation;
         cin >> secondLocation;
-        if(game.getBoard().checkValidLocation(firstLocation,Consts::BUILD_ROAD, &owner) && game.getBoard().checkValidLocation(secondLocation,Consts::BUILD_ROAD, &owner)){
+        if(game.getBoard().checkValidLocation(firstLocation,Consts::BUILD_ROAD, &owner, false) && game.getBoard().checkValidLocation(secondLocation,Consts::BUILD_ROAD, &owner, false)){
             game.getBoard().placeRoad(firstLocation, &owner);
             game.getBoard().placeRoad(secondLocation, &owner);
             this->used = true;

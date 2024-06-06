@@ -19,14 +19,20 @@ class Player
         vector<DevelopmentCard*> developmentCards;
         size_t victoryPoints;
         string color;
+        size_t findCard(size_t type);
     public:
         Player(string name, size_t age);
         Player();
-        bool canPlaceSettelement();//id is the index of the Settelement in the board tiles vector
-        bool canPlaceCity();//id is the index of the City in the board tiles vector
-        bool canPlaceRoad();//id is the index of the Road in the board tiles vector
-        void playDevelopmentCard(size_t id);//id is the index of the card in the developmentCards vector
-        DevelopmentCard* buyDevelopmentCard();
+        bool canBuySettelement();
+        void buySettlement(size_t id, bool firstRound = false);
+        bool canBuyCity();
+        void buyCity(size_t id, bool firstRound = false);
+        bool canBuyRoad();
+        void buyRoad(size_t id, bool firstRound = false);
+        bool canBuyDevelopmentCard();
+        void buyDevelopmentCard(DevelopmentCard* card);
+        const vector<DevelopmentCard*>& getDevelopmentCards() ;
+        
         string getName() const;
         const vector<size_t> &getResources() const;
         const vector<size_t> &getSettelments() const;
@@ -41,8 +47,14 @@ class Player
         size_t getAge() const ;
         const Player& getPlayer();
         size_t getNumResources() const;
-        string stealRandomResource() ;
-        size_t stealResource(size_t resource);
+        string stealRandomResource() ;//for knight card
+        size_t stealResource(size_t resource);//for momopoly card
+        void tradeResources(Player* player,vector<size_t> resourcesToGive, vector<size_t> resourcesToTake);
+        void printResources();
+        void printDevelopmentCards();
+        void tradeDevelopmentCards(Player* player, vector<size_t> cardsToGive, vector<size_t> cardsToTake);
+        size_t hasLongestArmy();
+
 };
 
 } // namespace ariel

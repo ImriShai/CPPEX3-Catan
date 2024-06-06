@@ -4,7 +4,7 @@ namespace ariel{
     YearOfPlenty::YearOfPlenty(){
         this->discription = "Year Of Plenty";
         this->used = false;
-        this->id = 1;
+        this->type = 4;
         this->value = 0;
     }
      void YearOfPlenty::useCard(Player& player, Catan& game){

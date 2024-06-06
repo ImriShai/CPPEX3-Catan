@@ -44,5 +44,13 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp"
-    }
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/clang++",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/imri/CPPEX3-Catan",
+            "binaryPath": "/home/imri/CPPEX3-Catan/Demo.o",
+            "binaryArgs": []
+        }
+    ]
 }

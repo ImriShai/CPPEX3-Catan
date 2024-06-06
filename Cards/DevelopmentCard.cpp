@@ -8,9 +8,9 @@ namespace ariel
     {
         return this->discription;
     }
-    size_t DevelopmentCard::getId() const
+    size_t DevelopmentCard::getType() const
     {
-        return this->id;
+        return this->type;
     }
     size_t DevelopmentCard::getValue() const
     {

@@ -11,10 +11,10 @@ class Settlement {
 private:
     size_t value;
     string type;
-    const size_t id;
+     size_t id;
     Player* owner;
-    vector<size_t> adjSett;
-    vector<size_t> adjRoads;
+    vector<size_t> adjSett = {};
+    vector<size_t> adjRoads = {};
 public:
     // Constructor
     Settlement(size_t id);
@@ -25,6 +25,8 @@ public:
     std::string getType() const;
     size_t getId() const;
      Player* getOwner() const;
+    const vector<size_t> &getAdjSett();
+    const vector<size_t> &getAdjRoads();
 
     // Setters
     void setValue(size_t newValue);

@@ -19,15 +19,13 @@ namespace ariel{
         public:
         Board();
         void printBoard(size_t mode);
-        void init();
         Tile* getTile(char id) const;
         Settlement* getSettlement(size_t id) const;
         const Road* getRoad(size_t id) const;
         void placeRoad(size_t id, Player* owner) const;
         void placeSettlement(size_t id, Player* owner) const;
-        bool checkValidLocation(size_t id, size_t mode, Player* owner) const;
+        bool checkValidLocation(size_t id, size_t mode, Player* owner, bool firstRound = false) const;
         void placeCity(size_t id, Player* owner) const;
-
         ~Board();
 
         };

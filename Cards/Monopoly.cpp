@@ -5,7 +5,7 @@ namespace ariel
     Monopoly::Monopoly(){
         this->discription = "Monopoly";
         this->used = false;
-        this->id = 1;
+        this->type = 3;
         this->value = 0;   
      } 
     // Override the useCard() method

@@ -10,7 +10,7 @@ namespace ariel{
 class Road {
 private:
     std::string type;
-    const size_t id;
+    size_t id;
     Player* owner;
     vector<size_t> adjSettelments; 
 

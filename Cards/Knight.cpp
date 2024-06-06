@@ -6,7 +6,7 @@ namespace ariel
      Knight::Knight(){
         this->discription = "Knight";
         this->used = false;
-        this->id = 1;
+        this->type = 0;
         this->value = 0;   
      } 
     // Override the useCard() method

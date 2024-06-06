@@ -1,15 +1,16 @@
 #include "Settelment.hpp"
 using namespace std;
 namespace ariel{
-    Settlement::Settlement(size_t id )
-        : value(Consts::VALUE::NONE), type("🟫"), id(id) ,owner(nullptr) {
-              vector<size_t> adjSett;
-              vector<size_t> adjRoads;
+    Settlement::Settlement(size_t id){
+            this->id = id;
+            this->owner = nullptr;
+            this->type = "🟫";
+            this->value = 1;
             switch (id)
             {
                 case 1:
-                  adjSett = {4,5};
-                  adjRoads = {1,2};
+                adjSett = {4,5};
+                 adjRoads = {1,2};
                 break;
             case 2:
                   adjSett = {5,6};
@@ -235,7 +236,8 @@ namespace ariel{
     std::string Settlement::getType() const { return type; }
     size_t Settlement::getId() const { return id; }
      Player* Settlement::getOwner() const { return owner; }
-
+    const vector<size_t> &Settlement::getAdjSett() { return adjSett; }
+    const vector<size_t> &Settlement::getAdjRoads() { return adjRoads; }
     // Setters
     void Settlement::setValue(size_t newValue) { value = newValue; }
     void Settlement::setType(const std::string& newType) { type = newType; }

@@ -20,6 +20,7 @@ class Consts
     static const string RED;
     static const string ORANGE;
     static const string BLUE;
+    static const string WHITE;
     static const vector<size_t> parseResource(const string resource);
     static const size_t getResourceIndex(const string resource);
     static const vector<string> RESOURCES;

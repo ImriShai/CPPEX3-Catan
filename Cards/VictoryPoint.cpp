@@ -5,7 +5,7 @@ namespace ariel
     VictoryPoint::VictoryPoint(){
         this->discription = "VictoryPoint";
         this->used = false;
-        this->id = 1;
+        this->type = 1;
         this->value = 1;
     }
 

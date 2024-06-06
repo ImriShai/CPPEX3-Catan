@@ -5,6 +5,8 @@
 #include <stdexcept>
 #include <unordered_map>
 #include <algorithm>
+#include <random>
+#include <chrono>
 #include "Player.hpp"
 #include "Board/Board.hpp"
 #include "Consts.hpp"
@@ -22,12 +24,12 @@ namespace ariel
 {
     class Catan
     {
-    
     private:
         vector<Player> players;
         size_t currentPlayer;
         Board board;
         vector<DevelopmentCard*> developmentCards;
+        size_t cardCounter;
        
         void build();
         void trade();
@@ -37,16 +39,19 @@ namespace ariel
         size_t rollDice();
         void initDevelopmentCards();
         void rolledSeven();
-        
-
-
+        void shuffleVector(std::vector<DevelopmentCard*>& vec);
+        void tradeResources();
+        void tradeDevelopmentCards();
+        void buildFirstRound();
+        void buildFirstRoundHelper(size_t i);
+        void collectResources(size_t diceRoll);
     public:
         Catan(Player& p1, Player& p2, Player& p3);
         ~Catan();
         void ChooseStartingPlayer();
         const Board &getBoard();
         void printBoard(size_t mode);
-        void start();
+        void PlayGame();
         bool checkWin();
         const Player& getCurrentPlayer();
         void init();
@@ -54,8 +59,5 @@ namespace ariel
         Player& getPlayer(size_t index);
         void playRound();
         void roolDice(); 
-
-
-
     };
 }
