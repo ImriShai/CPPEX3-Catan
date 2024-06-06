@@ -10,8 +10,14 @@ namespace ariel
     }
 
     void VictoryPoint::useCard(Player& player, Catan& game) {
-        // Implement the logic for using the Knight development card
-        // ...
+        if(this->used) {
+            throw "This card has already been used";
+        }
+        if(&player!=&game.getCurrentPlayer()) {
+            throw "You can only use this card on your turn";
+        }
+        player.addVictoryPoints(this->value);
+        this->used = true;
     }
     
 };

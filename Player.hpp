@@ -27,10 +27,10 @@ class Player
         void placeRoad(size_t id);//id is the index of the Road in the board tiles vector
         void playDevelopmentCard(size_t id);//id is the index of the card in the developmentCards vector
         DevelopmentCard* buyDevelopmentCard();
-        string getName();
-        const vector<size_t> &getResources();
-        const vector<size_t> &getSettelments();
-        const vector<size_t> &getRoads();
+        string getName() const;
+        const vector<size_t> &getResources() const;
+        const vector<size_t> &getSettelments() const;
+        const vector<size_t> &getRoads() const;
         size_t getVictoryPoints();
         void addResource(size_t resource, size_t amount);
         void removeResource(size_t resource, size_t amount);
@@ -40,6 +40,9 @@ class Player
         ~Player();
         size_t getAge() const ;
         const Player& getPlayer();
+        size_t getNumResources() const;
+        string stealRandomResource() ;
+        size_t stealResource(size_t resource);
 };
 
 } // namespace ariel

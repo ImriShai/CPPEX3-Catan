@@ -11,6 +11,9 @@ namespace ariel{
         if(used){
             throw invalid_argument("You already used this card");
         }
+        if(&player != &game.getCurrentPlayer()){
+            throw invalid_argument("You can only use this card on your turn");
+        }
         cout<<"Choose 2 cards from the bank, Enter a vector of the cards you want, the oreder is: Brick, Wood, Wheat, Sheep, Ore "<<endl;
         cout<<"Enter the first card: ";
         string input;

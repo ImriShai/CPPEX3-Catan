@@ -23,7 +23,7 @@ public:
     string getType();
     void setType(const std::string& type);
 
-   const Player &getOwner();
+   const Player* getOwner() const;
     void setOwner(Player* owner);
 
     const vector<size_t> &getAdjacents();

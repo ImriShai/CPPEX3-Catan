@@ -32,16 +32,16 @@ namespace ariel
         void playDevelopmentCard(size_t id);//id is the index of the card in the developmentCards vector
         DevelopmentCard* buyDevelopmentCard();
         
-        string Player::getName(){
+        string Player::getName() const{
             return this->name;
         }
-        const vector<size_t>& Player::getResources(){
+        const vector<size_t>& Player::getResources() const{
             return this->resources;
         }
-        const vector<size_t>& Player::getSettelments(){
+        const vector<size_t>& Player::getSettelments() const{
             return this->settlements;
         }
-        const vector<size_t>& Player::getRoads(){
+        const vector<size_t>& Player::getRoads() const{
             return this->roads;
         }
         size_t Player::getVictoryPoints(){
@@ -82,4 +82,55 @@ namespace ariel
             }
             this->resources[resource] -= amount;
 }
+        size_t Player::getNumResources() const{
+            size_t sum = 0;
+            for(size_t i : this->resources){
+                sum += i;
+            }
+            return sum;
+        }
+
+        string Player::stealRandomResource() { //Look at the cards as a vector, each card has one spot in the vector, the amount of cards is the sum of resources in the player resources vector
+        //then choose a random number between 0 and the size of the vector, if the number is smaller than the amount of brick cards, it means were still at the brick cards in the original vector, so we remove one brick card
+        //else, we subtract the amount of brick cards from the random number and check if its smaller than the amount of wood cards, if so, we remove one wood card, and so on
+            
+            size_t size = this->resources.size();
+            size_t resourceIndex = rand() % size;
+            if(this->resources[Consts::BRICK] >= resourceIndex){
+                this->resources[Consts::BRICK]--;
+                return "BRICK";
+            }
+            resourceIndex-= this->resources[Consts::BRICK];
+            if(this->resources[Consts::WOOD] >= resourceIndex){
+                this->resources[Consts::WOOD]--;
+                return "WOOD";
+        }
+        resourceIndex-= this->resources[Consts::WOOD];
+        if(this->resources[Consts::WHEAT] >= resourceIndex){
+            this->resources[Consts::WHEAT]--;
+            return "WHEAT";
+        }
+        resourceIndex-= this->resources[Consts::WHEAT];
+        if(this->resources[Consts::SHEEP] >= resourceIndex){
+            this->resources[Consts::SHEEP]--;
+            return "SHEEP";
+        }
+        resourceIndex-= this->resources[Consts::SHEEP];
+        if(this->resources[Consts::ORE] >= resourceIndex){
+            this->resources[Consts::ORE]--;
+            return "ORE";
+        }
+        return "ERROR";
 }
+        size_t Player::stealResource(size_t resource){
+            if(resource < 0 || resource > 4){
+                throw invalid_argument("Resource must be between 0 and 4");
+            }
+            size_t amount = this->resources[resource];
+            this->resources[resource] = 0;
+            return amount;
+        }
+        const Player& Player::getPlayer(){
+            return *this;
+        }
+} // namespace ariel

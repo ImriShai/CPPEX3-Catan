@@ -233,13 +233,16 @@ using namespace ariel;
     std::string Road::getType() {
         return this->type;
     }
-    const Player& Road::getOwner() {
-        return *owner;
+    const Player* Road::getOwner() const {
+        return owner;
     }   
     void Road::setType(const std::string& type) {
         this->type = type;
     }
     void Road::setOwner(Player* owner) {
+        if(this->owner != nullptr){
+            throw invalid_argument("Road already has an owner");
+        }
         this->owner = owner;
     }
     const vector<size_t> &Road::getAdjacents(){

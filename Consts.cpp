@@ -33,3 +33,21 @@ const std::vector<size_t> ariel::Consts::parseResource(const std::string resourc
 
     return result;
 }
+const size_t ariel::Consts::getResourceIndex(const std::string resource)
+{
+    if (resource == "BRICK") {
+        return Consts::RESOURCE::BRICK;
+    } else if (resource == "WOOD") {
+        return Consts::RESOURCE::WOOD;
+    } else if (resource == "WHEAT") {
+        return Consts::RESOURCE::WHEAT;
+    } else if (resource == "SHEEP") {
+        return Consts::RESOURCE::SHEEP;
+    } else if (resource == "ORE") {
+        return Consts::RESOURCE::ORE;
+    } else {
+        throw std::invalid_argument("Invalid resource name.");
+    }
+}
+const std::vector<std::string> ariel::Consts::RESOURCES = {"BRICK", "WOOD", "WHEAT", "SHEEP", "ORE"};
+

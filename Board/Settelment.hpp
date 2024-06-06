@@ -24,7 +24,7 @@ public:
     int getValue() const;
     std::string getType() const;
     size_t getId() const;
-    const Player& getOwner() const;
+    const Player* getOwner() const;
 
     // Setters
     void setValue(size_t newValue);

@@ -59,6 +59,8 @@ namespace ariel
         const Player& getCurrentPlayer();
         void init();
         void getPlayerInput();
+        Player& getPlayer(size_t index);
+
 
 
     };

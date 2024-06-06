@@ -16,6 +16,7 @@ namespace ariel{
         }
         void Catan::ChooseStartingPlayer(){
             cout<<"The starting player is: "<<players[0].getName()<<endl;
+            this->currentPlayer = 0;
         }
        const Board& Catan::getBoard(){
             return board;
@@ -25,6 +26,46 @@ namespace ariel{
         }
         void Catan::start(){
 
+        }
+        void Catan::getPlayerInput(){
+            cout<<"It's "<<players[currentPlayer].getName()<<"'s turn"<<endl;
+            cout<<"Choose an action:"<<endl;
+            cout<<"1. Build"<<endl;
+            cout<<"2. Trade"<<endl;
+            cout<<"3. Buy Development Card"<<endl;
+            cout<<"4. Play Development Card"<<endl;
+            cout<<"5. End Turn"<<endl;
+            int choice;
+            cin>>choice;
+            while(choice < 1 || choice > 5 || cin.fail()){
+                cin.clear();
+                cin.ignore(1000, '\n'); 
+                cout<<"Invalid choice, please enter a valid choice"<<endl;
+                cin>>choice;
+            }
+            switch(choice){
+                case 1:
+                    build();
+                    break;
+                case 2:
+                    trade();
+                    break;
+                case 3:
+                    buyDevelopmentCard();
+                    break;
+                case 4:
+                    playDevelopmentCard();
+                    break;
+                case 5:
+                    endTurn();
+                    break;
+            }
+        }
+       
+        Player& Catan::getPlayer(size_t index){
+            if(index < 0 || index > 2)
+                throw invalid_argument("Index must be between 0 and 2");
+            return players[index];
         }
         bool Catan::checkWin(){
             for(Player p : players){
@@ -63,6 +104,8 @@ namespace ariel{
                 delete developmentCards[i];
             }
         }
+        
+    
         
 }
         
