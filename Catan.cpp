@@ -88,15 +88,15 @@ namespace ariel
     }
 
     void Catan::roolDice(){
-        size_t dice1 = rand() % 6 + 1;
-        size_t dice2 = rand() % 6 + 1;
+        size_t dice1 = (size_t)(rand() % 6 + 1);
+        size_t dice2 =  (size_t)(rand() % 6 + 1);
         size_t sum = dice1 + dice2;
         cout << "You rolled " << sum << endl;
         if(sum==7) rolledSeven();
         else{
             vector<char> tilesId = Consts::resourceTiles.at(sum);
             for(char id : tilesId){
-                const Tile* tile = board.getTile(id);
+                 Tile* tile = board.getTile(id);
                 vector<size_t> settlements = tile->getSettelments();
                 for(size_t i : settlements){
                     Settlement* settlement = board.getSettlement(i);
@@ -107,12 +107,11 @@ namespace ariel
             }
            
         }
-        
-            
-        
+    }
+    void Catan::rolledSeven(){
 
     }
-
+        
     void Catan::playRound(){
         bool end = false;
         roolDice();
@@ -158,7 +157,10 @@ namespace ariel
         case 5:
             endTurn();
             return true;
+        default:
+            return false;
         }
+        
     }
 
     void Catan::build()
@@ -170,6 +172,7 @@ namespace ariel
         cout << "4. Back" << endl;
         int choice;
         cin >> choice;
+        size_t id;
         while (choice < 1 || choice > 3 || cin.fail())
         {
             cin.clear();
@@ -180,13 +183,12 @@ namespace ariel
         switch (choice)
         {
         case 1:
-            size_t id;
             board.printBoard(Consts::BUILD_SETTLEMENT);
             cout << "Enter the id of the settlement you want to place" << endl;
             cin >> id;
             try
             {
-                players[currentPlayer].placeSettelement(id);
+                // players[currentPlayer].placeSettelement(id);
             }
             catch (const invalid_argument &e)
             {
@@ -195,12 +197,11 @@ namespace ariel
             break;
         case 2:
             board.printBoard(Consts::BUILD_CITY);
-            size_t id;
             cout << "Enter the id of the city you want to place" << endl;
             cin >> id;
             try
             {
-                players[currentPlayer].placeCity(id);
+                // players[currentPlayer].placeCity(id);
             }
             catch (const invalid_argument &e)
             {
@@ -209,12 +210,11 @@ namespace ariel
             break;
         case 3:
             board.printBoard(Consts::BUILD_ROAD);
-            size_t id;
             cout << "Enter the id of the road you want to place" << endl;
             cin >> id;
             try
             {
-                players[currentPlayer].placeRoad(id);
+                // players[currentPlayer].placeRoad(id);
             }
             catch (const invalid_argument &e)
             {
@@ -226,5 +226,20 @@ namespace ariel
             break;
         }
     }
+    void Catan::buyDevelopmentCard(){//TODO
+
+    }
+    void Catan::playDevelopmentCard(){//TODO
+
+    }
+    void Catan::trade(){//TODO
+
+    }
+    void Catan::endTurn(){
+
+    }
+    
+
 
 }
+

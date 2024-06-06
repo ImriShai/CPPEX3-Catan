@@ -38,7 +38,7 @@ namespace ariel{
         
     
     }
-    const Tile* Board::getTile(char id) const{
+     Tile* Board::getTile(char id) const {
         if(id<'A' || id>'S'){
             throw invalid_argument("id must be between A and S");
         }

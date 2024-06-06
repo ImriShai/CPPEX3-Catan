@@ -27,8 +27,8 @@ public:
     string getResource() const;
     void setSetellmentType(int index, int type);
     void setRoadOwner(int index);
-    vector<size_t> &getSettelments() const;
-    vector<size_t> &getRoads() const;
+    vector<size_t> &getSettelments() ;
+    vector<size_t> &getRoads() ;
     char getId() const;
     string getResourceType() const;
 

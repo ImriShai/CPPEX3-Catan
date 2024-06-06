@@ -17,18 +17,9 @@ namespace ariel
             this->roads = {};
             this->developmentCards = {};
         }
-            bool Player::placeSettelement(size_t id){
-            if(id<1||id>54){
-                throw invalid_argument("id must be between 1 and 54");
-            }
-            if(this->resources[0] < 1 || this->resources[1] < 1 || this->resources[2] < 1 || this->resources[3] < 1){
-                throw invalid_argument("Not enough resources to place a settlement");
-            }
-            return true;
+            
 
-        }
-        void placeCity(size_t id);//id is the index of the City in the board tiles vector
-        void placeRoad(size_t id);//id is the index of the Road in the board tiles vector
+      
         void playDevelopmentCard(size_t id);//id is the index of the card in the developmentCards vector
         DevelopmentCard* buyDevelopmentCard();
         
@@ -95,7 +86,7 @@ namespace ariel
         //else, we subtract the amount of brick cards from the random number and check if its smaller than the amount of wood cards, if so, we remove one wood card, and so on
             
             size_t size = this->resources.size();
-            size_t resourceIndex = rand() % size;
+            size_t resourceIndex = (size_t)rand() % size;
             if(this->resources[Consts::BRICK] >= resourceIndex){
                 this->resources[Consts::BRICK]--;
                 return "BRICK";
@@ -133,4 +124,22 @@ namespace ariel
         const Player& Player::getPlayer(){
             return *this;
         }
+
+        bool Player::canPlaceSettelement(){
+            return true;
+
+            
+        }
+        bool Player::canPlaceCity(){
+            return true;
+
+        }
+        bool Player::canPlaceRoad(){
+            return true;
+
+        }
+
+
+
+
 } // namespace ariel

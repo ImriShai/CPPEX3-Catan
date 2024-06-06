@@ -37,6 +37,7 @@ namespace ariel
         size_t rollDice();
         void initDevelopmentCards();
         void rolledSeven();
+        
 
 
     public:

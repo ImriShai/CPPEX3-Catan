@@ -20,7 +20,7 @@ namespace ariel{
         Board();
         void printBoard(size_t mode);
         void init();
-        const Tile* getTile(char id) const;
+        Tile* getTile(char id) const;
         Settlement* getSettlement(size_t id) const;
         const Road* getRoad(size_t id) const;
         void placeRoad(size_t id, Player* owner) const;
