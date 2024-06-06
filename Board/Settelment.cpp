@@ -231,10 +231,10 @@ namespace ariel{
         }
 
     // Gettersw
-    int Settlement::getValue() const { return value; }
+    size_t Settlement::getValue() const { return value; }
     std::string Settlement::getType() const { return type; }
     size_t Settlement::getId() const { return id; }
-    const Player* Settlement::getOwner() const { return owner; }
+     Player* Settlement::getOwner() const { return owner; }
 
     // Setters
     void Settlement::setValue(size_t newValue) { value = newValue; }

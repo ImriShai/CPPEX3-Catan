@@ -10,6 +10,7 @@ class Tile
     private:
     size_t number;                 // Number on the tile
     string resource;            // Resource type on the tile
+    string resourceType;        // Resource type on the tile
     const char id;                    // ID of the tile
     vector<size_t> roads;       // Vector of roads on the tile
     vector<size_t> settelments; // Vector of settelments on the tile
@@ -29,6 +30,7 @@ public:
     vector<size_t> &getSettelments() const;
     vector<size_t> &getRoads() const;
     char getId() const;
+    string getResourceType() const;
 
 
 };

@@ -51,3 +51,16 @@ const size_t ariel::Consts::getResourceIndex(const std::string resource)
 }
 const std::vector<std::string> ariel::Consts::RESOURCES = {"BRICK", "WOOD", "WHEAT", "SHEEP", "ORE"};
 
+const std::unordered_map<size_t, std::vector<char>> ariel::Consts::resourceTiles = {
+           {2, {'B'}},
+           {3, {'K', 'N'}},
+           {4, {'F', 'O'}},
+           {5, {'P','Q'}},
+           {6, {'E', 'R'}},
+           {8, {'L','M'}},
+           {9, {'C','H'}},
+           {10, {'A','G'}},
+           {11, {'I','S'}},
+           {12, {'D'}}};
+    
+

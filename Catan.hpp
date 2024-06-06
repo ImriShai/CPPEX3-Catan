@@ -28,17 +28,7 @@ namespace ariel
         size_t currentPlayer;
         Board board;
         vector<DevelopmentCard*> developmentCards;
-        unordered_map<size_t, vector<char>> resourceTiles = {
-           {2, {'B'}},
-           {3, {'K', 'N'}},
-           {4, {'F', 'O'}},
-           {5, {'P','Q'}},
-           {6, {'E', 'R'}},
-           {8, {'L','M'}},
-           {9, {'C','H'}},
-           {10, {'A','G'}},
-           {11, {'I','S'}},
-           {12, {'D'}}};
+       
         void build();
         void trade();
         void buyDevelopmentCard();
@@ -46,6 +36,7 @@ namespace ariel
         void endTurn();
         size_t rollDice();
         void initDevelopmentCards();
+        void rolledSeven();
 
 
     public:
@@ -58,8 +49,10 @@ namespace ariel
         bool checkWin();
         const Player& getCurrentPlayer();
         void init();
-        void getPlayerInput();
+        bool getPlayerInput();
         Player& getPlayer(size_t index);
+        void playRound();
+        void roolDice(); 
 
 
 

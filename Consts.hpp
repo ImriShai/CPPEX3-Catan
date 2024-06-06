@@ -4,6 +4,7 @@
 #include <iostream>
 #include <stdexcept>
 #include <sstream> 
+#include <unordered_map>
 
 using namespace std;
 namespace ariel
@@ -22,6 +23,7 @@ class Consts
     static const vector<size_t> parseResource(const string resource);
     static const size_t getResourceIndex(const string resource);
     static const vector<string> RESOURCES;
+     static const unordered_map<size_t, vector<char>> resourceTiles;
     
 };
 }

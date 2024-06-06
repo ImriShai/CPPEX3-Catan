@@ -16,7 +16,7 @@ namespace ariel{
         }
         return roads[id-1];
     }
-    const Settlement* Board::getSettlement(size_t id) const{
+     Settlement* Board::getSettlement(size_t id) const{
         if(id<1 || id>54){
             throw invalid_argument("id must be between 1 and 54");
         }
@@ -102,4 +102,5 @@ namespace ariel{
         }
     }
 
+   
 }

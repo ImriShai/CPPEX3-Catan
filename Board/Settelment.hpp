@@ -21,10 +21,10 @@ public:
          
 
     // Getters
-    int getValue() const;
+    size_t getValue() const;
     std::string getType() const;
     size_t getId() const;
-    const Player* getOwner() const;
+     Player* getOwner() const;
 
     // Setters
     void setValue(size_t newValue);
