@@ -243,14 +243,23 @@ namespace ariel{
     void Settlement::setType(const std::string& newType) { type = newType; }
     
     void Settlement::setOwner(Player* newOwner) { owner = newOwner;}
-    string Settlement::toString(size_t mode){
+    string Settlement::toString(size_t mode, Player* builder){
         switch (mode)
         {
         case Consts::REGULAR:
             return this->getType();
             break;
         case Consts::BUILD_SETTLEMENT:
+           if(this->getOwner() != nullptr){
+            return this->getType();
+           }
             return to_string(this->getId());
+            break;
+        case Consts::BUILD_CITY:
+            if(this->getOwner() == builder){
+                return to_string(this->getId());
+            }
+            return this->getType();
             break;
         case Consts::BUILD_ROAD:
             return this->getType();

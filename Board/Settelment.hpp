@@ -33,7 +33,7 @@ public:
     void setType(const std::string& newType);
 
     void setOwner(Player* newOwner);
-    string toString(size_t mode);
+    string toString(size_t mode, Player* builder);
     
 };
 }

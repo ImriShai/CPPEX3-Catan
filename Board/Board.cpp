@@ -73,11 +73,11 @@ namespace ariel
     void Board::placeSettlement(size_t id, Player *owner) const
     {
         settlements[id - 1]->setOwner(owner);
-        settlements[id - 1]->setType(owner->getColor() + Consts::WHITE);
+        settlements[id - 1]->setType(owner->getColor()+ Consts::SETTELMENTEMOJI + Consts::WHITE);
     }
     void Board::placeCity(size_t id, Player *owner) const
     {
-        settlements[id - 1]->setType(owner->getColor() + Consts::WHITE + Consts::WHITE);
+        settlements[id - 1]->setType(owner->getColor() + Consts::CITYEMOJI + Consts::WHITE);
     }
     bool Board::checkValidLocation(size_t id, size_t mode, Player *owner, bool firstRound) const
     {

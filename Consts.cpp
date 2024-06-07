@@ -1,8 +1,10 @@
 #include "Consts.hpp"
-const std::string ariel::Consts::RED = "/033[1;31m";
-const std::string ariel::Consts::BLUE = "/033[1;34m";
-const std::string ariel::Consts::ORANGE = "/033[1;33m";
-const std::string ariel::Consts::WHITE = "/033[0m";
+const std::string ariel::Consts::RED = "\033[31m";
+const std::string ariel::Consts::BLUE = "\033[34m";
+const std::string ariel::Consts::ORANGE = "\033[33m";
+const std::string ariel::Consts::WHITE = "\033[0m";
+const std::string ariel::Consts::CITYEMOJI = "🏙";
+const std::string ariel::Consts::SETTELMENTEMOJI = "🏘";
 
 static bool isValidNumber(const std::string& str) {
     for (char c : str) {

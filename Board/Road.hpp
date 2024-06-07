@@ -27,7 +27,7 @@ public:
     void setOwner(Player* owner);
 
     const vector<size_t> &getAdjacents();
-    string toString(size_t mode); 
+    string toString(size_t mode, Player* builder); 
 
     // Other member functions specific to the Road class
 };

@@ -346,7 +346,7 @@ const vector<size_t> &Road::getAdjacents()
 {
     return this->adjSettelments;
 }
-string Road::toString(size_t mode)
+string Road::toString(size_t mode, Player *builder)
 {
     switch (mode)
     {
@@ -356,7 +356,14 @@ string Road::toString(size_t mode)
     case Consts::BUILD_SETTLEMENT:
         return this->getType();
         break;
+    case Consts::BUILD_CITY:
+        return this->getType();
+        break;
     case Consts::BUILD_ROAD:
+        if (this->getOwner() != nullptr)
+        {
+            return this->getType();
+        }
         return to_string(this->id);
         break;
     default:
