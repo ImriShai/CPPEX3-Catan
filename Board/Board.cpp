@@ -17,13 +17,57 @@ namespace ariel
             roads[i] = new Road(i + 1);
         }
     }
-    void Board::printBoard(size_t mode)
+    void Board::printBoard(size_t mode, Player *builder) const
     {
-        // for(Tile* t : tiles){
-        //     cout<<t->getTileType()<<" ";
-        // }
-        // cout<<endl;
+        cout << "            " <<  settlements[0]->toString(mode,builder) << "      " <<  settlements[1] ->toString(mode, builder) << "       " <<  settlements[2] ->toString(mode, builder) << "\n"
+         << "          " << roads[0]->toString(mode,builder) << "   " << roads[1]->toString(mode,builder) << "  " << roads[2]->toString(mode,builder) << "   " << roads[3]->toString(mode,builder) << "   " << roads[4]->toString(mode,builder) << "   " << roads[5]->toString(mode,builder) << "\n"
+         << "         " <<  settlements[3] ->toString(mode, builder) << "     " <<  settlements[4] ->toString(mode, builder) << "       " <<  settlements[5] ->toString(mode, builder) << "      " <<  settlements[6] ->toString(mode, builder) << "\n"
+         << "         " << roads[6]->toString(mode,builder) << " " <<  tiles[0]->getResource() <<"   " <<roads[7]->toString(mode,builder)  << "  " <<  tiles[1]->getResource() << "   " <<roads[8]->toString(mode,builder) <<"  "<<   tiles[2]->getResource() << "    " << roads[9]->toString(mode,builder) << "\n"
+         << "         " <<  settlements[7] ->toString(mode, builder) << " " <<  tiles[0]->getNumber() << "  " <<  settlements[8] ->toString(mode, builder) << "   " <<  tiles[1]->getNumber() << "   " <<  settlements[9] ->toString(mode, builder) << "  " <<  tiles[2]->getNumber() << "  " <<  settlements[10] ->toString(mode, builder) << "\n"
+         << "       " << roads[10]->toString(mode,builder) << "   " << roads[11]->toString(mode,builder) << " " << roads[12]->toString(mode,builder) << "   " << roads[13]->toString(mode,builder) << "   " << roads[14]->toString(mode,builder) << "   " << roads[15]->toString(mode,builder) << "  " << roads[16]->toString(mode,builder) << "   " << roads[17]->toString(mode,builder) << " \n" //row5
+         << "      " <<  settlements[11] ->toString(mode, builder) << "    " <<  settlements[12] ->toString(mode, builder) << "     " <<  settlements[13] ->toString(mode, builder) << "      " <<  settlements[14] ->toString(mode, builder) << "    " <<  settlements[15] ->toString(mode, builder) << "\n" //row6
+         << "      " << roads[18]->toString(mode,builder) << "  " <<  tiles[3]->getResource()<< "  " << roads[19]->toString(mode,builder) << "  " <<  tiles[4]->getResource()<< "  " << roads[20]->toString(mode,builder) << "  " <<  tiles[5]->getResource()<<"  " << roads[21]->toString(mode,builder) << "  " <<  tiles[6]->getResource() << "  " << roads[22]->toString(mode,builder) << "\n" //row7
+         << "      " <<  settlements[16] ->toString(mode, builder) << " " <<  tiles[3]->getNumber() << "  " <<  settlements[17] ->toString(mode, builder) << "  " <<  tiles[4]->getNumber() << "  " <<  settlements[18] ->toString(mode, builder) << "  " <<  tiles[5]->getNumber() << "  " <<  settlements[19] ->toString(mode, builder) << "  " <<  tiles[6]->getNumber() << "  " <<  settlements[20] ->toString(mode, builder) << "\n" //row8
+         << "    " << roads[23]->toString(mode,builder) << "   " << roads[24]->toString(mode,builder) << "  " << roads[25]->toString(mode,builder) << "  " << roads[26]->toString(mode,builder) << "    " << roads[27]->toString(mode,builder) << "   " << roads[28]->toString(mode,builder) << " " << roads[29]->toString(mode,builder) << "   " << roads[30]->toString(mode,builder) << "  " << roads[31]->toString(mode,builder) << "   " << roads[32]->toString(mode,builder) << "\n" //row9 
+         << "   " <<  settlements[21] ->toString(mode, builder) << "    " <<  settlements[22] ->toString(mode, builder) << "     " <<  settlements[23] ->toString(mode, builder) << "     " <<  settlements[24] ->toString(mode, builder) << "     " <<  settlements[25] ->toString(mode, builder) << "     " <<  settlements[26] ->toString(mode, builder) << "\n" // row10
+         << "   " << roads[33]->toString(mode,builder) << "  " <<  tiles[7]->getResource()<< "  " << roads[34]->toString(mode,builder) << "  " <<  tiles[8]->getResource()<<"  " << roads[35]->toString(mode,builder) << "  " <<  tiles[9]->getResource()<<"   " << roads[36]->toString(mode,builder) << "  " <<  tiles[10]->getResource() <<"   " << roads[37]->toString(mode,builder) << "  " <<  tiles[11]->getResource() << "    " << roads[38]->toString(mode,builder) << "\n"//row11
+         << "   " <<  settlements[27] ->toString(mode, builder) << "  " <<  tiles[7]->getNumber() << "  " <<  settlements[28] ->toString(mode, builder) << " " <<  tiles[8]->getNumber() << " " <<  settlements[29] ->toString(mode, builder) << "   " <<  tiles[9]->getNumber() << "  " <<  settlements[30] ->toString(mode, builder) << "  " <<  tiles[10]->getNumber() << "  " <<  settlements[31] ->toString(mode, builder) << "   " <<  tiles[11]->getNumber() << "  " <<  settlements[32] ->toString(mode, builder) << "\n"
+         << "    " << roads[39]->toString(mode,builder) << "    " << roads[40]->toString(mode,builder) << " " << roads[41]->toString(mode,builder) << "   " << roads[42]->toString(mode,builder) << "   " << roads[43]->toString(mode,builder) << "  " << roads[44]->toString(mode,builder) << "   " << roads[45]->toString(mode,builder) << "  " << roads[46]->toString(mode,builder) << "   " << roads[47]->toString(mode,builder) << "   " << roads[48]->toString(mode,builder) << "\n"
+         << "      " <<  settlements[33] ->toString(mode, builder) << "     " <<  settlements[34] ->toString(mode, builder) << "      " <<  settlements[35] ->toString(mode, builder) << "    " <<  settlements[36] ->toString(mode, builder) << "      " <<  settlements[37] ->toString(mode, builder) << "\n"
+         << "      " << roads[49]->toString(mode,builder) << "  " <<  tiles[12]->getResource()<<"    " << roads[50]->toString(mode,builder) << "  " <<  tiles[13]->getResource()<<"   " << roads[51]->toString(mode,builder) << "  " <<  tiles[14]->getResource()<<" " << roads[52]->toString(mode,builder) << "    " <<  tiles[15]->getResource()<<" " << roads[53]->toString(mode,builder) << " \n" //looks good
+         << "      " <<  settlements[38] ->toString(mode, builder) << "  " <<  tiles[12]->getNumber() << "  " <<  settlements[39] ->toString(mode, builder) << "   " <<  tiles[13]->getNumber() << "  " <<  settlements[40] ->toString(mode, builder) << "  " <<  tiles[14]->getNumber() << "  " <<  settlements[41] ->toString(mode, builder) << "   " <<  tiles[15]->getNumber() << " " <<  settlements[42] ->toString(mode, builder) << "\n"
+         << "       " << roads[54]->toString(mode,builder) << "    " << roads[55]->toString(mode,builder) << "  " << roads[56]->toString(mode,builder) << "   " << roads[57]->toString(mode,builder) << "   " << roads[58]->toString(mode,builder) << "   " << roads[59]->toString(mode,builder) << "   " << roads[60]->toString(mode,builder) << "   " << roads[61]->toString(mode,builder) << "\n" //looksfine
+         << "         " <<  settlements[43] ->toString(mode, builder) << "      " <<  settlements[44] ->toString(mode, builder) << "      " <<  settlements[45] ->toString(mode, builder) << "      " <<  settlements[46] ->toString(mode, builder) << "\n" //sofarsogood
+         << "          " << roads[62]->toString(mode,builder) << "  " <<  tiles[16]->getResource()<<"  " << roads[63]->toString(mode,builder) << "  " <<  tiles[17]->getResource()<<"   " << roads[64]->toString(mode,builder) << "   " <<  tiles[18]->getResource()<<"  " << roads[65]->toString(mode,builder) << "  \n"
+         << "          " <<  settlements[47] ->toString(mode, builder) << "  " <<  tiles[16]->getNumber() << "  " <<  settlements[48] ->toString(mode, builder) << "  " <<  tiles[17]->getNumber() << "  " <<  settlements[49] ->toString(mode, builder) << "   " <<  tiles[18]->getNumber() << " " <<  settlements[50] ->toString(mode, builder) << "\n"
+         << "            " << roads[66]->toString(mode,builder)<<"  " << roads[67]->toString(mode,builder) << "   " << roads[68]->toString(mode,builder) << "  " << roads[69]->toString(mode,builder) << "   " << roads[70]->toString(mode,builder) << "    " << roads[71]->toString(mode,builder) << "   \n"
+         << "            " <<  settlements[51] ->toString(mode, builder) << "      " <<  settlements[52] ->toString(mode, builder) << "      " <<  settlements[53] ->toString(mode, builder) << "\n";
+        // printRow1(mode, builder);
+        // printRow2(mode, builder);
+        // printRow3(mode, builder);
+        // printRow4(mode, builder);
+        // printRow5(mode, builder);
+        // printRow6(mode, builder);
+        // printRow7(mode, builder);
+        // printRow8(mode, builder);
+        // printRow9(mode, builder);
+        // printRow10(mode, builder);
+        // printRow11(mode, builder);
+        // printRow12(mode, builder);
+        // printRow13(mode, builder);
+        // printRow14(mode, builder);
+        // printRow15(mode, builder);
+        // printRow16(mode, builder);
+        // printRow17(mode, builder);
+        // printRow18(mode, builder);
+        // printRow19(mode, builder);
+        // printRow20(mode, builder);
+        // printRow21(mode, builder);
+        // printRow22(mode, builder);
+        // printRow23(mode, builder);
+        // printRow24(mode, builder);
     }
+   
     const Road *Board::getRoad(size_t id) const
     {
         if (id < 1 || id > 72)
@@ -156,5 +200,42 @@ namespace ariel
             throw invalid_argument("Invalid mode, not a valid mode.");
         }
     }
+    void Board::printRow1(size_t mode, Player* builder) const
+    {
+        cout << "                " << settlements[0]->toString(mode, builder) << "            " << settlements[1]->toString(mode, builder) << "              " << settlements[2]->toString(mode, builder) << endl << endl;
+        }
+    void Board::printRow2(size_t mode, Player* builder) const{
+        cout << "             " << roads[0]->toString(mode, builder) << "    " <<roads[1]->toString(mode, builder) << "        " << roads[2]->toString(mode,builder)<< "      "<< roads[3]->toString(mode, builder)  <<"        " <<roads[4]->toString(mode, builder) <<"      "<<  roads[5]->toString(mode, builder) << endl <<endl;
+    }
+    void Board::printRow3(size_t mode, Player* builder) const{
+        cout << "           " << settlements[3]->toString(mode, builder) << "          " << settlements[4]->toString(mode, builder) << "          " << settlements[5]->toString(mode, builder) << "         " << settlements[6]->toString(mode,builder) <<endl <<endl;
+    }
+    void Board::printRow4(size_t mode, Player* builder) const{
+        cout << "           " << roads[6]->toString(mode, builder) << "   " << tiles[0]->getResource() <<roads[7]->toString(mode, builder) << "     " << roads[8]->toString(mode,builder) << "    " << roads[9]->toString(mode,builder) <<  endl;
+    }
+    void Board::printRow5(size_t mode, Player* builder) const{}
+    void Board::printRow6(size_t mode, Player* builder) const{}
+    void Board::printRow7(size_t mode, Player* builder) const{}
+    void Board::printRow8(size_t mode, Player* builder) const{}
+    void Board::printRow9(size_t mode, Player* builder) const{}
+    void Board::printRow10(size_t mode, Player* builder) const{}
+    void Board::printRow11(size_t mode, Player* builder) const{}
+    void Board::printRow12(size_t mode, Player* builder) const{}
+    void Board::printRow13(size_t mode, Player* builder) const{}
+    void Board::printRow14(size_t mode, Player* builder) const{}
+    void Board::printRow15(size_t mode, Player* builder) const{}
+    void Board::printRow16(size_t mode, Player* builder) const{}
+    void Board::printRow17(size_t mode, Player* builder) const{}
+    void Board::printRow18(size_t mode, Player* builder) const{}
+    void Board::printRow19(size_t mode, Player* builder) const{}
+    void Board::printRow20(size_t mode, Player* builder) const{}
+    void Board::printRow21(size_t mode, Player* builder) const{}
+    void Board::printRow22(size_t mode, Player* builder) const{}
+    void Board::printRow23(size_t mode, Player* builder) const{}
+    void Board::printRow24(size_t mode, Player* builder) const{}
+
+
 
 }
+
+

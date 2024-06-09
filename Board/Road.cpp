@@ -277,17 +277,14 @@ Road::Road(size_t id)
     case 64:
         adjSettelments = {45, 49};
         type = "|";
-
         break;
     case 65:
         adjSettelments = {46, 50};
         type = "|";
-
         break;
     case 66:
         adjSettelments = {47, 51};
         type = "|";
-
         break;
     case 67:
         adjSettelments = {48, 52};

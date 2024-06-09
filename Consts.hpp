@@ -21,6 +21,7 @@ class Consts
     static const string ORANGE;
     static const string BLUE;
     static const string WHITE;
+    static const string NUMBER;
     static const string CITYEMOJI;
     static const string SETTELMENTEMOJI;
     static const vector<size_t> parseResource(const string resource);

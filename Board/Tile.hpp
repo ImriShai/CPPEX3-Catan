@@ -2,13 +2,14 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "../Consts.hpp"
 using namespace std;
 namespace ariel
 {
 class Tile
 {
     private:
-    size_t number = 0;             // Number on the tile
+    string number = "";             // Number on the tile
     string resource = "";         // Resource type on the tile
     string resourceType = "";    // Resource type on the tile
     const char id;                 // ID of the tile
@@ -21,7 +22,7 @@ public:
     ~Tile();
 
     // Getter and setter methods for tile properties
-    size_t getNumber() const;
+    string getNumber() const;
     string getResource() const;
     vector<size_t> &getSettelments() ;
     char getId() const;

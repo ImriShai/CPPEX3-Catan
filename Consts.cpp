@@ -3,6 +3,7 @@ const std::string ariel::Consts::RED = "\033[31m";
 const std::string ariel::Consts::BLUE = "\033[34m";
 const std::string ariel::Consts::ORANGE = "\033[33m";
 const std::string ariel::Consts::WHITE = "\033[0m";
+const std::string ariel::Consts::NUMBER = "\033[42m";
 const std::string ariel::Consts::CITYEMOJI = "🏙";
 const std::string ariel::Consts::SETTELMENTEMOJI = "🏘";
 

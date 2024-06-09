@@ -27,7 +27,7 @@ namespace ariel
     }
     void Catan::printBoard(size_t mode)
     {
-        board.printBoard(mode);
+        board.printBoard(mode, &players[currentPlayer]);
     }
 
     void Catan::buildFirstRound()
@@ -46,7 +46,7 @@ namespace ariel
     }
     void Catan::buildFirstRoundHelper(size_t i){
          cout << players[i].getName() << " choose a location for your first settlement" << endl;
-            board.printBoard(Consts::BUILD_SETTLEMENT);
+            board.printBoard(Consts::BUILD_SETTLEMENT, &players[i]);
             size_t id;
             bool first = true;
             bool notValid = true;
@@ -72,7 +72,7 @@ namespace ariel
             board.placeSettlement(id, &players[i]);
             players[i].buySettlement(id, true);
             cout << players[i].getName() << " choose a location for your first road" << endl;
-            board.printBoard(Consts::BUILD_ROAD);
+            board.printBoard(Consts::BUILD_ROAD, &players[i]);
             
             notValid = true;
             first = true;
@@ -312,7 +312,7 @@ namespace ariel
         switch (choice)
         {
         case 1:
-            board.printBoard(Consts::BUILD_SETTLEMENT);
+            board.printBoard(Consts::BUILD_SETTLEMENT, &players[currentPlayer]);
             cout << "Enter the id of the settlement you want to build" << endl;
             cin >> id;
             if (cin.fail())
@@ -339,7 +339,7 @@ namespace ariel
             }
             break;
         case 2:
-            board.printBoard(Consts::BUILD_CITY);
+            board.printBoard(Consts::BUILD_CITY, &players[currentPlayer]);
             cout << "Enter the id of the city you want to build" << endl;
             cin >> id;
             if (cin.fail())
@@ -366,7 +366,7 @@ namespace ariel
             }
             break;
         case 3:
-            board.printBoard(Consts::BUILD_ROAD);
+            board.printBoard(Consts::BUILD_ROAD, &players[currentPlayer]);
             cout << "Enter the id of the road you want to build" << endl;
             cin >> id;
             if (cin.fail())
