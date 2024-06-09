@@ -29,6 +29,7 @@ valgrind: demo #test
 # Build target
 demo: $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
+# ./demo
 
 
 # Compile source files

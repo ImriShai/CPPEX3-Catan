@@ -27,7 +27,7 @@ namespace ariel
     }
     void Catan::printBoard(size_t mode)
     {
-        board.printBoard(mode);
+        board.printBoard(mode, &players[currentPlayer]);
     }
 
     void Catan::buildFirstRound()
@@ -36,17 +36,19 @@ namespace ariel
         {
             buildFirstRoundHelper(i);
         }
-        for(size_t i = 2; i>=0;i--)
+        for(int i = 2; i>=0;i--)
         {
-            buildFirstRoundHelper(i);
+            buildFirstRoundHelper((size_t)i);
         }
+        cout<< "finished first build round"<<endl;
+        board.printBoard(Consts::REGULAR, &players[currentPlayer]);
         for(size_t i = 2; i<=12;i++){
             collectResources(i);
         }
     }
     void Catan::buildFirstRoundHelper(size_t i){
          cout << players[i].getName() << " choose a location for your first settlement" << endl;
-            board.printBoard(Consts::BUILD_SETTLEMENT);
+            board.printBoard(Consts::BUILD_SETTLEMENT, &players[i]);
             size_t id;
             bool first = true;
             bool notValid = true;
@@ -72,7 +74,7 @@ namespace ariel
             board.placeSettlement(id, &players[i]);
             players[i].buySettlement(id, true);
             cout << players[i].getName() << " choose a location for your first road" << endl;
-            board.printBoard(Consts::BUILD_ROAD);
+            board.printBoard(Consts::BUILD_ROAD, &players[i]);
             
             notValid = true;
             first = true;
@@ -174,17 +176,24 @@ namespace ariel
         }
     }
     void Catan::collectResources(size_t diceRoll){
+        if(diceRoll == 7){
+            return;
+        }
         vector<char> tilesId = Consts::resourceTiles.at(diceRoll);
             for (char id : tilesId)
             {
                 Tile *tile = board.getTile(id);
                 vector<size_t> settlements = tile->getSettelments();
+                
                 for (size_t i : settlements)
                 {
                     Settlement *settlement = board.getSettlement(i);
                     if (settlement->getOwner() != nullptr)
                     {
-                        settlement->getOwner()->addResource(Consts::getResourceIndex(tile->getResource()), settlement->getValue());
+                        
+                        cout<< "Player "<< settlement->getOwner()->getName() << " got " << settlement->getValue() << " " << tile->getResourceType() << endl;
+                        cout<< "Current resource: "<< Consts::getResourceIndex(tile->getResourceType()) << endl;
+                        settlement->getOwner()->addResource(Consts::getResourceIndex(tile->getResourceType()), settlement->getValue());
                     }
                 }
             }
@@ -245,10 +254,13 @@ namespace ariel
     void Catan::playRound()
     {
         bool end = false;
+        printBoard(Consts::REGULAR);
         roolDice();
+        printResources();
         while (!end)
         {
             end = getPlayerInput();
+            
         }
     }
 
@@ -260,10 +272,11 @@ namespace ariel
         cout << "2. Trade" << endl;
         cout << "3. Buy Development Card" << endl;
         cout << "4. Play Development Card" << endl;
-        cout << "5. End Turn" << endl;
+        cout<< "5. Print Resources"<<endl;
+        cout << "6. End Turn" << endl;
         int choice;
         cin >> choice;
-        while (choice < 1 || choice > 5 || cin.fail())
+        while (choice < 1 || choice > 6 || cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -274,6 +287,7 @@ namespace ariel
         {
         case 1:
             build();
+            
             return false;
         case 2:
             trade();
@@ -285,6 +299,9 @@ namespace ariel
             playDevelopmentCard();
             return false;
         case 5:
+            printResources();
+            return false;
+        case 6:
             endTurn();
             return true;
         default:
@@ -312,7 +329,7 @@ namespace ariel
         switch (choice)
         {
         case 1:
-            board.printBoard(Consts::BUILD_SETTLEMENT);
+            board.printBoard(Consts::BUILD_SETTLEMENT, &players[currentPlayer]);
             cout << "Enter the id of the settlement you want to build" << endl;
             cin >> id;
             if (cin.fail())
@@ -330,6 +347,7 @@ namespace ariel
                     {
                         board.placeSettlement(id, &players[currentPlayer]);
                         players[currentPlayer].buySettlement(id);
+                        board.printBoard(Consts::REGULAR, &players[currentPlayer]);
                     }
                 }
             }
@@ -339,7 +357,7 @@ namespace ariel
             }
             break;
         case 2:
-            board.printBoard(Consts::BUILD_CITY);
+            board.printBoard(Consts::BUILD_CITY, &players[currentPlayer]);
             cout << "Enter the id of the city you want to build" << endl;
             cin >> id;
             if (cin.fail())
@@ -357,6 +375,8 @@ namespace ariel
                     {
                         board.placeCity(id, &players[currentPlayer]);
                         players[currentPlayer].buyCity(id);
+                                                board.printBoard(Consts::REGULAR, &players[currentPlayer]);
+
                     }
                 }
             }
@@ -366,7 +386,7 @@ namespace ariel
             }
             break;
         case 3:
-            board.printBoard(Consts::BUILD_ROAD);
+            board.printBoard(Consts::BUILD_ROAD, &players[currentPlayer]);
             cout << "Enter the id of the road you want to build" << endl;
             cin >> id;
             if (cin.fail())
@@ -384,6 +404,8 @@ namespace ariel
                     {
                         board.placeRoad(id, &players[currentPlayer]);
                         players[currentPlayer].buyRoad(id);
+                                                board.printBoard(Consts::REGULAR, &players[currentPlayer]);
+
                     }
                 }
             }
@@ -507,7 +529,13 @@ namespace ariel
         players[currentPlayer].printResources();
         cout << "Enter the resources you want to get, in the following order: BRICK WOOD WHEAT SHEEP ORE" << endl;
         string resources;
-        cin >> resources;
+        string resource1;
+        string resource2;
+        string resource3;
+        string resource4;
+        string resource5;
+        cin >> resource1 >> resource2 >> resource3 >> resource4 >> resource5;
+        resources = resource1 + " " + resource2 + " " + resource3 + " " + resource4 + " " + resource5;
         vector<size_t> resourcesToGet;
         try
         {
@@ -521,7 +549,8 @@ namespace ariel
         cout << player->getName() << " You have the following resources: " << endl;
         player->printResources();
         cout << "Enter the resources you want to get, in the following order: BRICK WOOD WHEAT SHEEP ORE" << endl;
-        cin >> resources;
+        cin >> resource1 >> resource2 >> resource3 >> resource4 >> resource5;
+        resources = resource1 + " " + resource2 + " " + resource3 + " " + resource4 + " " + resource5;
         vector<size_t> resourcesToGive;
         try
         {
@@ -543,6 +572,7 @@ namespace ariel
         try
         {
             players[currentPlayer].tradeResources(player, resourcesToGive, resourcesToGet);
+            cout<< "Trade completed"<<endl;
         }
         catch (const invalid_argument &e)
         {
@@ -578,7 +608,13 @@ namespace ariel
         players[currentPlayer].printDevelopmentCards();
         cout << "Enter the vector of the cards you want to get in the following order: Knight VictoryPoint RoadsBuilding Monopoly YearOfPlenty" << endl;
         string choice;
-        cin >> choice;
+        string choice1;
+        string choice2;
+        string choice3;
+        string choice4;
+        string choice5;
+        cin >> choice1 >> choice2 >> choice3 >> choice4 >> choice5;
+        choice = choice1 + " " + choice2 + " " + choice3 + " " + choice4 + " " + choice5;
         vector<size_t> cardsToGive;
         try
         {
@@ -593,7 +629,8 @@ namespace ariel
         cout << player->getName() << " You have the following development cards: " << endl;
         player->printDevelopmentCards();
         cout << "Enter the vector of the cards you want to get in the following order: Knight VictoryPoint RoadsBuilding Monopoly YearOfPlenty" << endl;
-        cin >> choice;
+        cin >> choice1 >> choice2 >> choice3 >> choice4 >> choice5;
+        choice = choice1 + " " + choice2 + " " + choice3 + " " + choice4 + " " + choice5;
         vector<size_t> cardsToGet;
         try
         {
@@ -620,6 +657,11 @@ namespace ariel
         {
             cout << e.what() << endl;
         }
+
+    }
+    void Catan::printResources()
+    {
+        players[currentPlayer].printResources();
     }
 
 } // namespace ariel

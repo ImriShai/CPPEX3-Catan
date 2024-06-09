@@ -17,6 +17,7 @@ namespace ariel
             this->settlements = {};
             this->roads = {};
             this->developmentCards = {};
+            this->resources = {0,0,0,0,0};
         }
             
 
@@ -61,6 +62,10 @@ namespace ariel
             return this->developmentCards;
         }   
         void Player::addResource(size_t resource, size_t amount){
+            if(resource == Consts::DESERT){
+                cout<<"DESERT" << endl;
+                return;
+            }
             if (resource < 0 || resource > 4 || amount < 0)
             {
                 throw invalid_argument("Resource must be between 0 and 4");
@@ -291,8 +296,9 @@ namespace ariel
          void Player::printResources(){
              cout << "Player " << this->name << " has the following resources:" << endl;
              for(size_t i = 0; i < this->resources.size(); i++){
-                 cout << Consts::RESOURCES[i] << ": " << this->resources[i] << " ";
+                 cout << Consts::RESOURCES[i] << ": " << this->resources[i] << ", ";
              }
+                cout << endl;
          }
 
             void Player::printDevelopmentCards(){

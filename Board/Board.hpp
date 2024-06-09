@@ -15,10 +15,12 @@ namespace ariel{
         Tile* tiles[19];
         Settlement* settlements[54];
         Road* roads[72];
+       
+        
 
         public:
         Board();
-        void printBoard(size_t mode);
+        void printBoard(size_t mode, Player* builder) const;
         Tile* getTile(char id) const;
         Settlement* getSettlement(size_t id) const;
         const Road* getRoad(size_t id) const;

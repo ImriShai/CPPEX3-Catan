@@ -45,6 +45,7 @@ namespace ariel
         void buildFirstRound();
         void buildFirstRoundHelper(size_t i);
         void collectResources(size_t diceRoll);
+        void printResources();
     public:
         Catan(Player& p1, Player& p2, Player& p3);
         ~Catan();

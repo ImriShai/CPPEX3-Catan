@@ -3,6 +3,7 @@ const std::string ariel::Consts::RED = "\033[31m";
 const std::string ariel::Consts::BLUE = "\033[34m";
 const std::string ariel::Consts::ORANGE = "\033[33m";
 const std::string ariel::Consts::WHITE = "\033[0m";
+const std::string ariel::Consts::NUMBER = "\033[42m";
 const std::string ariel::Consts::CITYEMOJI = "🏙";
 const std::string ariel::Consts::SETTELMENTEMOJI = "🏘";
 
@@ -29,7 +30,7 @@ const std::vector<size_t> ariel::Consts::parseResource(const std::string resourc
         result.push_back((size_t)std::stoi(token));
     }
 
-    // Ensure the vector has exactly 5 elements
+   
     if (result.size() != 5) {
         throw std::invalid_argument("Input string must contain exactly 5 numbers.");
     }
@@ -48,7 +49,10 @@ const size_t ariel::Consts::getResourceIndex(const std::string resource)
         return Consts::RESOURCE::SHEEP;
     } else if (resource == "ORE") {
         return Consts::RESOURCE::ORE;
-    } else {
+    } else if(resource == "DESERT"){
+        return Consts::RESOURCE::DESERT;
+    }
+    else {
         throw std::invalid_argument("Invalid resource name.");
     }
 }

@@ -51,6 +51,11 @@
             "cwd": "/home/imri/CPPEX3-Catan",
             "binaryPath": "/home/imri/CPPEX3-Catan/Demo.o",
             "binaryArgs": []
+        },
+        {
+            "cwd": "/home/imri/CPPEX3-Catan",
+            "binaryPath": "/home/imri/CPPEX3-Catan/demo",
+            "binaryArgs": []
         }
     ]
 }
