@@ -145,6 +145,8 @@ namespace ariel
         void Player::buySettlement(size_t id, bool firstRound){
              if(firstRound){
                this->settlements.push_back(id);
+                this->addVictoryPoints(1);
+
             }
             else if(canBuySettelement()){
                 this->resources[Consts::BRICK]--;
@@ -166,21 +168,18 @@ namespace ariel
             cout << "You don't have enough resources to buy a city" << endl;
             return false;
         }
-        void Player::buyCity(size_t id, bool firstRound){
-            if(firstRound){
-               this->settlements.push_back(id);
-            }
-            else if(canBuyCity()){
+        void Player::buyCity(size_t id){
+            
+             if(canBuyCity()){ //actuallt dosent change the settelment itself, the board does this, the player just needs holds a list of the settelments and cities he has
                 this->resources[Consts::ORE]-=3;
                 this->resources[Consts::WHEAT]-=2;
-                this->settlements.push_back(id);
                 cout << "You bought a city!" << endl;
+                this->addVictoryPoints(1);
             }
             
         }
         bool Player::canBuyRoad(){
             if(this->resources[Consts::BRICK] >= 1 && this->resources[Consts::WOOD] >= 1){
-
                 return true;
             }
             cout << "You don't have enough resources to buy a road" << endl;
@@ -302,10 +301,11 @@ namespace ariel
          }
 
             void Player::printDevelopmentCards(){
-                cout << "Player " << this->name << " has the following development cards:" << endl;
+                cout << "Player " << this->name << " has the following development cards: " ;
                 for(size_t i = 0; i < this->developmentCards.size(); i++){
                     cout << this->developmentCards[i]->getDiscription() << " ";
                 }
+                cout << endl;
             }
         size_t Player::findCard(size_t type){//returns the index of the first card in the player's hand with the given type
             for(size_t i = 0; i < this->developmentCards.size(); i++){

@@ -24,13 +24,13 @@ namespace ariel
          cin >> playerToSteal;   
             if (playerToSteal > 3 || playerToSteal < 0 || cin.fail())
             {
-                throw "Invalid player";
+                throw invalid_argument("Invalid player");
             }
            if(&(game.getPlayer(playerToSteal)) == &player){
-               throw "You can't steal from yourself";
+               throw invalid_argument("You can't steal from yourself");
            }
            if(game.getPlayer(playerToSteal).getResources().size() == 0){
-               throw "The player you chose has no resources";
+               throw invalid_argument("The player you chose has no resources");
            }
            string resource = game.getPlayer(playerToSteal).stealRandomResource();
               cout << "You stole 1 " << resource << " from " << game.getPlayer(playerToSteal).getName() << endl;

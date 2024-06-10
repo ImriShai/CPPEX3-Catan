@@ -11,13 +11,15 @@ namespace ariel
 
     void VictoryPoint::useCard(Player& player, Catan& game) {
         if(this->used) {
-            throw "This card has already been used";
+            throw invalid_argument("This card has already been used");
         }
         if(&player!=&game.getCurrentPlayer()) {
-            throw "You can only use this card on your turn";
+            throw invalid_argument("You can only use this card on your turn");
         }
         player.addVictoryPoints(this->value);
         this->used = true;
+        cout << "You have successfully used the Victory Point card!" << endl;
+        cout << "You now have " << player.getVictoryPoints() << " victory points" << endl;
     }
     
 };

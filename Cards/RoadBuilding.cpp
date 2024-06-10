@@ -11,10 +11,10 @@ namespace ariel
 
     void RoadBuilding::useCard(Player& owner, Catan& game){
         if(this->used) {
-            throw "This card has already been used";
+            throw invalid_argument("This card has already been used");
         }
         if(&owner!=&game.getCurrentPlayer()) {
-            throw "You can only use this card on your turn";
+            throw invalid_argument("You can only use this card on your turn");
         }
         cout << "Choose first location to place a road: ";
         size_t firstLocation;
@@ -26,9 +26,10 @@ namespace ariel
             game.getBoard().placeRoad(firstLocation, &owner);
             game.getBoard().placeRoad(secondLocation, &owner);
             this->used = true;
+            cout << "You have successfully used the Road Building card!" << endl;
         }
         else{
-            throw "You can't build there!";
+            throw invalid_argument("You can't build there!");
         }  
     }
 };

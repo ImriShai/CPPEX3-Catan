@@ -20,13 +20,15 @@ class Player
         size_t victoryPoints;
         string color;
         size_t findCard(size_t type);
+        void upgradeToCity(size_t id);// the id of the settlement to upgrade
+
     public:
         Player(string name, size_t age);
         Player();
         bool canBuySettelement();
         void buySettlement(size_t id, bool firstRound = false);
         bool canBuyCity();
-        void buyCity(size_t id, bool firstRound = false);
+        void buyCity(size_t id);// the id of the settlement to check 
         bool canBuyRoad();
         void buyRoad(size_t id, bool firstRound = false);
         bool canBuyDevelopmentCard();

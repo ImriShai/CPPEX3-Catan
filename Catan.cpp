@@ -201,6 +201,11 @@ namespace ariel
     void Catan::rolledSeven()
     {
         string choice;
+        string choice1;
+        string choice2;
+        string choice3;
+        string choice4;
+        string choice5;
         for (Player p : players)
         {
             if (p.getNumResources() > 7)
@@ -208,15 +213,16 @@ namespace ariel
                 cout << p.getName() << " you have more than 7 resources, you need to discard half of them" << endl;
                 size_t numToDiscard = p.getNumResources() / 2;
                 cout << "You need to choose " << numToDiscard << " resources to discard" << endl;
+                p.printResources();
                 cout << "Enter a vector of the resources you want to discard, in the following order: BRICK WOOD WHEAT SHEEP ORE " << endl;
-                cin >> choice;
                 vector<size_t> resources;
                 bool validChoice = false;
-                while (choice.size() != 5 && validChoice)
+                while (!validChoice)
                 {
                     try
                     {
-                        cin >> choice;
+                        cin >> choice1 >> choice2 >> choice3 >> choice4 >> choice5;
+                        choice = choice1 + " " + choice2 + " " + choice3 + " " + choice4 + " " + choice5;
                         resources = Consts::parseResource(choice); // would handle the exception
                         size_t sum = 0;
                         for (size_t i : resources)
@@ -226,10 +232,12 @@ namespace ariel
                         if (sum != numToDiscard)
                         {
                             cout << "You need to discard exactly " << numToDiscard << " resources" << endl;
+                            p.printResources();
                         }
                         else if (p.getResources()[Consts::BRICK] < resources[Consts::BRICK] || p.getResources()[Consts::WOOD] < resources[Consts::WOOD] || p.getResources()[Consts::WHEAT] < resources[Consts::WHEAT] || p.getResources()[Consts::SHEEP] < resources[Consts::SHEEP] || p.getResources()[Consts::ORE] < resources[Consts::ORE])
                         {
                             cout << "You don't have enough resources to discard" << endl;
+                            p.printResources();
                         }
                         else
                         {
@@ -238,6 +246,9 @@ namespace ariel
                                 p.removeResource(i, resources[i]);
                             }
                             validChoice = true;
+                            cout << "Resources discarded" << endl;
+                            cout << "Current resources: " << endl;
+                            p.printResources();
                         }
                     }
                     catch (const std::exception &e)
@@ -272,11 +283,13 @@ namespace ariel
         cout << "2. Trade" << endl;
         cout << "3. Buy Development Card" << endl;
         cout << "4. Play Development Card" << endl;
-        cout<< "5. Print Resources"<<endl;
-        cout << "6. End Turn" << endl;
+        cout << "5. Print Resources"<<endl;
+        cout << "6. View Board" << endl;
+        cout << "7. Show Victory Points" << endl;
+        cout << "8. End Turn" << endl;
         int choice;
         cin >> choice;
-        while (choice < 1 || choice > 6 || cin.fail())
+        while (choice < 1 || choice > 8 || cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -302,6 +315,12 @@ namespace ariel
             printResources();
             return false;
         case 6:
+            printBoard(Consts::REGULAR);
+            return false;
+        case 7: 
+            cout<< "Victory Points: "<< players[currentPlayer].getVictoryPoints()<<endl;
+            return false;
+        case 8:
             endTurn();
             return true;
         default:
@@ -375,7 +394,7 @@ namespace ariel
                     {
                         board.placeCity(id, &players[currentPlayer]);
                         players[currentPlayer].buyCity(id);
-                                                board.printBoard(Consts::REGULAR, &players[currentPlayer]);
+                        board.printBoard(Consts::REGULAR, &players[currentPlayer]);
 
                     }
                 }
