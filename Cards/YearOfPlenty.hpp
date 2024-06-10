@@ -1,13 +1,16 @@
 #include "DevelopmentCard.hpp"
 namespace ariel
 {
-class YearOfPlenty : public DevelopmentCard {
-public:
-    // Constructor
-    YearOfPlenty();
-        void useCard(Player& owner, Catan& game);
+    /*
+     * @brief This class represents a YearOfPlenty card in the game
+    */
+    class YearOfPlenty : public DevelopmentCard
+    {
+    public:
+        // Constructor
+        YearOfPlenty();
+        void useCard(Player &owner, Catan &game);
 
-
-    // Override the useCard() method
-};
+        // Override the useCard() method
+    };
 }

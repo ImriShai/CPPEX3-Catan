@@ -107,7 +107,13 @@ namespace ariel
         buildFirstRound();
         while (!checkWin())
         {
+            try{
             playRound();
+            }
+            catch(const std::exception &e){
+                std::cerr << e.what() << '\n';
+                return;
+            }
         }
     }
 
@@ -271,7 +277,6 @@ namespace ariel
         while (!end)
         {
             end = getPlayerInput();
-            
         }
     }
 
@@ -287,9 +292,10 @@ namespace ariel
         cout << "6. View Board" << endl;
         cout << "7. Show Victory Points" << endl;
         cout << "8. End Turn" << endl;
+        cout << "9. Quit" << endl;
         int choice;
         cin >> choice;
-        while (choice < 1 || choice > 8 || cin.fail())
+        while (choice < 1 || choice > 9 || cin.fail())
         {
             cin.clear();
             cin.ignore(1000, '\n');
@@ -323,6 +329,26 @@ namespace ariel
         case 8:
             endTurn();
             return true;
+        case 9:
+            cout << "Are you sure you want to quit?" << endl;
+            cout << "1. Yes" << endl;
+            cout << "2. No" << endl;
+            int quit;
+            cin >> quit;
+            while (quit < 1 || quit > 2 || cin.fail())
+            {
+                cin.clear();
+                cin.ignore(1000, '\n');
+                cout << "Invalid choice, please enter a valid choice" << endl;
+                cin >> quit;
+            }
+            if (quit == 1)
+            {
+                throw invalid_argument("Game ended, one of the players quit");
+            }
+            return false;
+
+           
         default:
             return false;
         }
@@ -513,10 +539,10 @@ namespace ariel
     {
         currentPlayer = (currentPlayer + 1) % 3;
     }
-    void Catan::shuffleVector(std::vector<DevelopmentCard *> &vec)
+    void Catan::shuffleVector(std::vector<DevelopmentCard *> &vec, size_t seed)
     {
         // Obtain a time-based seed:
-        unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+        // unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
 
         std::shuffle(vec.begin(), vec.end(), std::default_random_engine(seed));
     }

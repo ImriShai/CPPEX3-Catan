@@ -25,6 +25,11 @@ namespace ariel
     class Catan
     {
     private:
+        friend class Knight;
+        friend class Monopoly;
+        friend class RoadBuilding;
+        friend class YearOfPlenty;
+        friend class VictoryPoint;
         vector<Player> players;
         size_t currentPlayer;
         Board board;
@@ -39,26 +44,26 @@ namespace ariel
         size_t rollDice();
         void initDevelopmentCards();
         void rolledSeven();
-        void shuffleVector(std::vector<DevelopmentCard*>& vec);
+        void shuffleVector(std::vector<DevelopmentCard*>& vec, size_t seed = 0);
         void tradeResources();
         void tradeDevelopmentCards();
         void buildFirstRound();
         void buildFirstRoundHelper(size_t i);
         void collectResources(size_t diceRoll);
         void printResources();
-    public:
-        Catan(Player& p1, Player& p2, Player& p3);
-        ~Catan();
         void ChooseStartingPlayer();
         const Board &getBoard();
         void printBoard(size_t mode);
-        void PlayGame();
         bool checkWin();
         const Player& getCurrentPlayer();
-        void init();
         bool getPlayerInput();
         Player& getPlayer(size_t index);
         void playRound();
         void roolDice(); 
+    public:
+        Catan(Player& p1, Player& p2, Player& p3);
+        ~Catan();
+       
+        void PlayGame();
     };
 }

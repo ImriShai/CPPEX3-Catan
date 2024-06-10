@@ -55,7 +55,7 @@ class Player
         void printResources();
         void printDevelopmentCards();
         void tradeDevelopmentCards(Player* player, vector<size_t> cardsToGive, vector<size_t> cardsToTake);
-        size_t hasLongestArmy();
+        size_t hasLongestArmy() ;
 
 };
 

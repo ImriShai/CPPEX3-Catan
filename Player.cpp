@@ -161,7 +161,7 @@ namespace ariel
         }
 
 
-        bool Player::canBuyCity(){
+        bool Player::canBuyCity() {
             if(this->resources[Consts::ORE] >= 3 && this->resources[Consts::WHEAT] >= 2){
                 return true;
             }
@@ -303,7 +303,7 @@ namespace ariel
             void Player::printDevelopmentCards(){
                 cout << "Player " << this->name << " has the following development cards: " ;
                 for(size_t i = 0; i < this->developmentCards.size(); i++){
-                    cout << this->developmentCards[i]->getDiscription() << " ";
+                    cout <<i <<": "<< this->developmentCards[i]->getDiscription() << " ";
                 }
                 cout << endl;
             }

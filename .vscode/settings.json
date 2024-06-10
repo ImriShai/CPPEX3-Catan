@@ -57,5 +57,6 @@
             "binaryPath": "/home/imri/CPPEX3-Catan/demo",
             "binaryArgs": []
         }
-    ]
+    ],
+    "makefile.makefilePath": "/home/imri/CPPEX3-Catan/makefile"
 }

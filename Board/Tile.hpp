@@ -16,7 +16,7 @@ class Tile
     vector<size_t> settelments = {}; // Vector of settelments on the tile
 public:
     // Constructor
-    Tile(char id);
+    Tile(char id, string number, string resource, string resourceType, vector<size_t> settelments);
 
     // Destructor
     ~Tile();

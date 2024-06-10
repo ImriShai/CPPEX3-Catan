@@ -11,13 +11,13 @@ class Settlement {
 private:
     size_t value;
     string type;
-     size_t id;
+    const size_t id;
     Player* owner;
     vector<size_t> adjSett = {};
     vector<size_t> adjRoads = {};
 public:
     // Constructor
-    Settlement(size_t id);
+    Settlement(size_t id, vector<size_t> adjSett, vector<size_t> adjRoads);
          
 
     // Getters
