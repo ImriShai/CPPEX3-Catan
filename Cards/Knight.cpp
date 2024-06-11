@@ -46,7 +46,13 @@ namespace ariel
                }
                throw invalid_argument("The player you chose has no resources");
            }
-           string resource = game.getPlayer(playerToSteal).stealRandomResource(); // steal a random resource from the player
+           string resource;
+           try{ //dosen't suppose to throw exception, but just in case
+            resource = game.getPlayer(playerToSteal).stealRandomResource(); // steal a random resource from the player
+           }catch(invalid_argument& e){
+               cout << e.what() << endl;
+               return;
+           }
               cout << "You stole 1 " << resource << " from " << game.getPlayer(playerToSteal).getName() << endl;
                 player.addResource(Consts::getResourceIndex(resource), 1); //add the stolen resource to the player
             this->used = true; //set the card as used

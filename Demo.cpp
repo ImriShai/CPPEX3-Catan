@@ -12,6 +12,10 @@
 using namespace std;
 using namespace ariel;
 
+/**
+ * @brief Main function to run the game
+ * @return int
+ */
 int main()
 {
 //    string name;

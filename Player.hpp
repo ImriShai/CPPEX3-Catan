@@ -8,6 +8,9 @@
 using namespace std;
 namespace ariel
 {
+/**
+ * @brief This class represents a player in the game of Catan.
+ */
 class Player
 {
     private:
@@ -34,6 +37,7 @@ class Player
         bool canBuyDevelopmentCard();
         void buyDevelopmentCard(DevelopmentCard* card);
         const vector<DevelopmentCard*>& getDevelopmentCards() ;
+        size_t getVictoryPointCards();
         
         string getName() const;
         const vector<size_t> &getResources() const;

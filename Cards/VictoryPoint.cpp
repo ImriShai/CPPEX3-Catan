@@ -25,7 +25,6 @@ namespace ariel
         if(&player!=&game.getCurrentPlayer()) { //if the player is not the current player, throw an exception
             throw invalid_argument("You can only use this card on your turn");
         }
-        player.addVictoryPoints(this->value); //add the victory points to the player
         this->used = true;//set the card as used
         this->description = "VictoryPoint (used)";
         cout << "You have successfully used the Victory Point card!" << endl;

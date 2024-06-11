@@ -9,6 +9,12 @@
 using namespace std;
 namespace ariel
 {
+/**
+ * @brief This class contains all the constants used in the game. 
+ * Enums are used to represent the different types of resources, development cards, and modes of the game.
+ * The class also contains a method to parse a string to a vector of resources and a method to get the index of a resource in the RESOURCES vector.
+ * The class also contains a vector of resources, to map between number and string name, and a map of resource tiles.
+ */
 class Consts
 {
     public:
