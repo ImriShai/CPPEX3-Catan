@@ -272,6 +272,27 @@ TEST_CASE("Test Catan")
         game.getPlayer(0).removeResource(Consts::WOOD, 5);
     }
 
+    SUBCASE("Trade cards"){
+        cout<<"\n\nTrade cards"<<endl;
+        game.getPlayer(0).addResource(Consts::BRICK, 5);
+        game.getPlayer(1).addResource(Consts::WOOD, 5);
+        game.getPlayer(1).printResources();
+        game.getPlayer(0).printResources();
+        std::istringstream simulatedInput("Bob 0 1 0 0 0 2 0 0 0 0 1");
+        auto cin_buf = std::cin.rdbuf();        // Save old buf
+        std::cin.rdbuf(simulatedInput.rdbuf()); // Redirect std::cin to simulatedInput
+        game.tradeResources();
+        std::cin.rdbuf(cin_buf); // Reset to standard input again
+        CHECK_EQ(game.getPlayer(0).getResources()[Consts::BRICK], 3);
+        CHECK_EQ(game.getPlayer(1).getResources()[Consts::BRICK], 2);
+        CHECK_EQ(game.getPlayer(1).getResources()[Consts::WOOD], 4);
+        CHECK_EQ(game.getPlayer(0).getResources()[Consts::WOOD], 1);
+        game.getPlayer(0).removeResource(Consts::BRICK, 3);
+        game.getPlayer(1).removeResource(Consts::BRICK, 2);
+        game.getPlayer(1).removeResource(Consts::WOOD, 4);
+        game.getPlayer(0).removeResource(Consts::WOOD, 1);
+    }
+
 
 }
 TEST_CASE("Player tests")
@@ -328,5 +349,33 @@ TEST_CASE("Player tests")
             game.getPlayer(0).removeResource(Consts::WHEAT, 1);
             game.getPlayer(0).removeResource(Consts::SHEEP, 1);
         }
+    }
+}
+TEST_CASE("Test Consts"){
+    SUBCASE("Test parseResource")
+    {
+        vector<size_t> res;
+        CHECK_EQ(Consts::parseResource("0 0 0 0 0").size(), 5);
+        CHECK_THROWS(Consts::parseResource("BRICK WOOD WHEAT SHEEP ORE"));
+        res = Consts::parseResource("1 2 3 4 5");
+        CHECK_EQ(res[0], 1);
+        CHECK_EQ(res[1], 2);
+        CHECK_EQ(res[2], 3);
+        CHECK_EQ(res[3], 4);
+        CHECK_EQ(res[4], 5);
+        CHECK_THROWS(Consts::parseResource("1 2 3 4 5 6"));
+        CHECK_THROWS(Consts::parseResource("1 2 3 4"));
+        CHECK_THROWS(Consts::parseResource("1 2 3 4 -5"));
+    }
+
+    SUBCASE("Test getResourceIndex")
+    {
+        CHECK_EQ(Consts::getResourceIndex("BRICK"), Consts::RESOURCE::BRICK);
+        CHECK_EQ(Consts::getResourceIndex("WOOD"), Consts::RESOURCE::WOOD);
+        CHECK_EQ(Consts::getResourceIndex("WHEAT"), Consts::RESOURCE::WHEAT);
+        CHECK_EQ(Consts::getResourceIndex("SHEEP"), Consts::RESOURCE::SHEEP);
+        CHECK_EQ(Consts::getResourceIndex("ORE"), Consts::RESOURCE::ORE);
+        CHECK_EQ(Consts::getResourceIndex("DESERT"), Consts::RESOURCE::DESERT);
+        
     }
 }

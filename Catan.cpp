@@ -703,11 +703,11 @@ namespace ariel
         string name;
         cin >> name;
         Player *player = nullptr;
-        for (Player p : players) //the player chooses a player to trade with, and the function finds the player
+        for (size_t i=0; i<Consts::NUM_OF_PLAYERS;i++) //the player chooses a player to trade with, and the function finds the player
         {
-            if (p.getName() == name)
+            if (players[i].getName() == name)
             {
-                player = &p;
+                player = &players[i];
                 break;
             }
         }
