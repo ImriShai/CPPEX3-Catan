@@ -291,8 +291,9 @@ namespace ariel
         string choice3;
         string choice4;
         string choice5;
-        for (Player p : players) // go through all the players
+        for (size_t i = 0;i<Consts::NUM_OF_PLAYERS;i++) // go through all the players
         {
+            Player &p = players[i];
             if (p.getNumResources() > 7)// if a player has more than 7 resources, ask the player to discard half of them
             {
                 cout << p.getName() << " you have more than 7 resources, you need to discard half of them" << endl; //prints to the player that he needs to discard half of his resources
@@ -581,7 +582,7 @@ namespace ariel
      */
     void Catan::buyDevelopmentCard()
     { // TODO
-        if (cardCounter == developmentCards.size()) //if there are no more development cards, print a message and return
+        if (cardCounter >= developmentCards.size()) //if there are no more development cards, print a message and return
         {
             cout << "No more development cards" << endl;
             return;

@@ -30,7 +30,7 @@ namespace ariel
          }
 
          //choose player to steal from
-         cout << "Choose player to steal from: 0 for" << game.getPlayer(0).getName() << " 1 for " << game.getPlayer(1).getName() << " 2 for " << game.getPlayer(2).getName() << " 3 for " << game.getPlayer(3).getName() << endl;
+         cout << "Choose player to steal from: 0 for " << game.getPlayer(0).getName() << " 1 for " << game.getPlayer(1).getName() << " 2 for " << game.getPlayer(2).getName() << endl;
          size_t playerToSteal;
          cin >> playerToSteal;   
             if (playerToSteal > 3 || playerToSteal < 0 || cin.fail()) //if the player to steal from is invalid, throw an exception
@@ -40,8 +40,8 @@ namespace ariel
            if(&(game.getPlayer(playerToSteal)) == &player){ //if the player tries to steal from himself, throw an exception
                throw invalid_argument("You can't steal from yourself");
            }
-           if(game.getPlayer(playerToSteal).getResources().size() == 0){ //if the player to steal from has no resources, throw an exception
-               if(game.getPlayer(0).getResources().size() == 0 && game.getPlayer(1).getResources().size() == 0 && game.getPlayer(2).getResources().size() ==0){
+           if(game.getPlayer(playerToSteal).getNumResources() == 0){ //if the player to steal from has no resources, throw an exception
+               if((game.getPlayer(0).getNumResources() == 0 || &game.getPlayer(0) == &player) && (game.getPlayer(1).getNumResources() == 0 || &game.getPlayer(1) == &player) && (game.getPlayer(2).getNumResources() == 0 || &game.getPlayer(2) == &player)){
                    throw invalid_argument("All players have no resources, card cannot be used for now");
                }
                throw invalid_argument("The player you chose has no resources");

@@ -161,6 +161,7 @@ namespace ariel
     {
         vector<size_t> adjSett;
         vector<size_t> adjRoads;
+         vector<size_t> ownerRoads = owner->getRoads();
          switch (mode)
         {
         case Consts::BUILD_SETTLEMENT: // check if the location is valid for a settlement
@@ -209,12 +210,17 @@ namespace ariel
 
             for (size_t adj : adjSett) //iterate over the adjacent settlements, at least one settlement of the same owner must be nearby
             {
-                cout<<adj<<endl;
-                
                 if (settlements[adj - 1]->getOwner() == owner)
                 { // to build a road, there must be a settlement of the player nearby
                     return true;
                 }
+            }
+            for(size_t i =0; i<ownerRoads.size(); i++){
+                
+                    if(roads[ownerRoads[i]-1]->getAdjacents()[0] == adjSett[0] || roads[ownerRoads[i]-1]->getAdjacents()[1] == adjSett[0] || roads[ownerRoads[i]-1]->getAdjacents()[0] == adjSett[1] || roads[ownerRoads[i]-1]->getAdjacents()[1] == adjSett[1]){
+                        return true;
+                    }
+                
             }
             cout << "no settlement nearby" << endl;
             return false;

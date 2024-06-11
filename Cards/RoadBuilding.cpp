@@ -33,12 +33,23 @@ namespace ariel
         size_t secondLocation;
         cin >> secondLocation;
         //if the locations are invalid, throw an exception, else, if both locations are valid, place the roads and set the card as used
-        if(game.getBoard().checkValidLocation(firstLocation,Consts::BUILD_ROAD, &owner, false) && game.getBoard().checkValidLocation(secondLocation,Consts::BUILD_ROAD, &owner, false)){
+        
+        if(game.getBoard().checkValidLocation(firstLocation,Consts::BUILD_ROAD, &owner, false) ){
             game.getBoard().placeRoad(firstLocation, &owner);
-            game.getBoard().placeRoad(secondLocation, &owner);
-            this->used = true;
-            this->description = "RoadBuilding (used)";
-            cout << "You have successfully used the Road Building card!" << endl;
+            owner.buyRoad(firstLocation, true);
+            if(game.getBoard().checkValidLocation(secondLocation,Consts::BUILD_ROAD, &owner, false)){
+               game.getBoard().placeRoad(secondLocation, &owner);
+               owner.buyRoad(secondLocation, true);
+               this->used = true;
+              this->description = "RoadBuilding (used)";
+              cout << "You have successfully used the Road Building card!" << endl;
+            }
+            else{
+                this->used = true;
+                this->description = "RoadBuilding (used)";
+                throw invalid_argument("You can't build there! only first road was built. Card is used.");
+            }
+            
         }
         else{
             throw invalid_argument("You can't build there!");

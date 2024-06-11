@@ -61,6 +61,11 @@ class Player
         void tradeDevelopmentCards(Player* player, vector<size_t> cardsToGive, vector<size_t> cardsToTake);
         size_t hasLongestArmy() ;
 
+
+        void setVictoryPoints(size_t points){ //for test purposes only
+            this->victoryPoints = points;
+        }
+
 };
 
 } // namespace ariel

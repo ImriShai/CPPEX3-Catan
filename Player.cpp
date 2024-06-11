@@ -209,13 +209,14 @@ namespace ariel
             throw invalid_argument("No resources to steal");
         }
         size_t resourceIndex = (size_t)rand() % size;// choose a random number between 0 and the amount of resources the player has -1
-        vector<string> resources(size);
-        for(size_t i = 0; i < this->resources.size(); i++){ // iterate over the resources and add the resource to the vector the amount of times the player has that resource
+        vector<string> resources2;
+        for(size_t i = 0; i < size; i++){ // iterate over the resources and add the resource to the vector the amount of times the player has that resource
             for(size_t j = 0; j < this->resources[i]; j++){
-                resources.push_back(Consts::RESOURCES[i]);
+                resources2.push_back(Consts::RESOURCES[i]);
             }
         }
-        return resources[resourceIndex]; // return the resource at the random index. 
+        this->resources[Consts::getResourceIndex(resources2[resourceIndex])]--; // remove the resource from the player
+        return resources2[resourceIndex]; // return the resource at the random index. 
     }
 
 
@@ -537,14 +538,18 @@ namespace ariel
      */
     size_t Player::hasLongestArmy()
     {
+        size_t longestArmy = 0;
         for (size_t i = 0; i < this->developmentCards.size(); i++) //iterate over the development cards and check if the player has 3 knight cards that been activated
         {
             if (this->developmentCards[i]->getDescription() == "Knight (used)")
             {
-                return 2;
+                longestArmy++;
             }
         }
-        return 0;
+       if(longestArmy >= 3){ //if the player has 3 or more knight cards that been activated, return 2
+           return 2;
+       }
+         return 0; //otherwise, return 0
     }
 
 } // namespace ariel
