@@ -472,10 +472,11 @@ namespace ariel
             board.printBoard(Consts::BUILD_SETTLEMENT, &players[currentPlayer]);
             cout << "Enter the id of the settlement you want to build" << endl;
             cin >> id;
-            if (cin.fail()) //if the id is invalid, ask the player to enter a valid id
+            if (cin.fail() || id>54 || id<1) //if the id is invalid, ask the player to enter a valid id
             {
                 cin.clear();
                 cin.ignore(1000, '\n');
+                cout << "Invalid id" << endl;
                 return;
             }
             try
@@ -503,10 +504,11 @@ namespace ariel
             board.printBoard(Consts::BUILD_CITY, &players[currentPlayer]); 
             cout << "Enter the id of the city you want to build" << endl;
             cin >> id;
-            if (cin.fail())
+            if (cin.fail() || id>54 || id<1)
             {
                 cin.clear();
                 cin.ignore(1000, '\n');
+                cout << "Invalid id" << endl;
                 return;
             }
             try
@@ -532,10 +534,11 @@ namespace ariel
             board.printBoard(Consts::BUILD_ROAD, &players[currentPlayer]);
             cout << "Enter the id of the road you want to build" << endl;
             cin >> id;
-            if (cin.fail())
+            if (cin.fail() || id>72 || id<1)
             {
                 cin.clear();
                 cin.ignore(1000, '\n');
+                cout<< "Invalid id"<<endl;
                 return;
             }
             try
