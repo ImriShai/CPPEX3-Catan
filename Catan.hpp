@@ -50,7 +50,6 @@ namespace ariel
         // void buyDevelopmentCard();
         // void playDevelopmentCard();
         // void endTurn();
-        // size_t rollDice();
         // void initDevelopmentCards();
         // void rolledSeven();
         // void shuffleVector(std::vector<DevelopmentCard*>& vec, size_t seed = 0);
@@ -68,14 +67,13 @@ namespace ariel
         // bool getPlayerInput();
         // Player& getPlayer(size_t index);
         // void playRound();
-        // void roolDice(); 
+        // void roolDice();
     public:
         void build();  //for testing
         void trade();
         void buyDevelopmentCard();
         void playDevelopmentCard();
         void endTurn();
-        size_t rollDice();
         void initDevelopmentCards();
         void rolledSeven();
         void shuffleVector(std::vector<DevelopmentCard*>& vec, size_t seed = 0);

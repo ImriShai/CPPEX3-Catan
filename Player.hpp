@@ -23,7 +23,6 @@ class Player
         size_t victoryPoints;
         string color;
         size_t findCard(size_t type);
-        void upgradeToCity(size_t id);// the id of the settlement to upgrade
 
     public:
         Player(string name, size_t age);

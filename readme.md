@@ -38,7 +38,7 @@ vector of resources, if it's a valid input, it returns a vector of how much from
   
   `endTurn()` - The method end the current turn, and moving the turn to the next player.
   
-  `rollDice()` - The method rolls 2 independent dices uniformly at random and returns the sum of them.
+  `rollDice()` - The method rolls 2 independent dices uniformly at random and calls `collectResources(sum)` or `rolledSeven()` with respect to the sum.
   
   `buyDevelopmentCard()` - The method checks if the current player has enough resources to buy a card. If so, and there are still cards to buy, it draws a card from the top of the deck  increment the deck, and addes the card to the player hand. 
  
